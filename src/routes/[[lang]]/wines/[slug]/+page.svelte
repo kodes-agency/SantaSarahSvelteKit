@@ -3,6 +3,13 @@
     export let data
     let pageData = data.singleWine.singleWinePage.data.attributes
     let wineData = data.singleWine.vina.data.attributes
+    import { onMount } from "svelte";
+    import { logoColor, iconColor } from "$lib/functions/store.js";
+
+    onMount(()=>{
+        $logoColor = "black"
+        $iconColor = "black"
+    })
 
 </script>
 
@@ -144,7 +151,7 @@
         align-items: center;
         gap: 10vh;
         padding-inline: 10vw;
-        padding-block: 15vw;
+        padding-block: 20vh;
     }
 
     .main-section {
@@ -178,6 +185,7 @@
     .wine-meta > h1 {
         color: var(--gray-color);
         font-size: 40px;
+        text-align: center;
     }
 
     .wine-meta > .year {
@@ -313,7 +321,6 @@
         justify-content: center;
         padding-inline: 10vw;
         padding-block: 5vh;
-
         gap: 10vh;
     }
 
@@ -336,6 +343,49 @@
     }
 
 
+    @media only screen and (max-width: 765px) {
+        .section-wrapper {
+            padding-inline: 5vw;
+            padding-block: 15vh;
+        }
+
+        .line-heading {
+            margin-bottom: 2vh;
+        }
+
+        .wine-meta > h1 {
+            font-size: 30px;
+        }
+
+        .wine-meta > img {
+            height: 80vw;
+            margin-top: -28vw;
+            margin-bottom: -25vw;
+        }
+
+        .wine-meta > .description {
+            max-width: 85vw;
+        }
+
+        .awards-heading-wrapper {
+            width: 90vw;
+        }
+
+        .information-wrapper {
+            padding-inline: 5vw;
+            padding-block: 0vh;
+            gap: 6vh;
+        }
+
+        .information-item-wrapper {
+            gap: 2vh
+        }
+
+        .information-item-wrapper > h3 {
+            font-size: 30px;
+        }
+
+    }
 
 
 

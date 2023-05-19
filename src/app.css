@@ -62,9 +62,10 @@ img {
     border: 1px solid var(--light-brown-color);
     text-transform: uppercase;
     font-size: 15px;
-    padding-block: 8px;
+    padding-block: 6px;
     padding-inline: 20px;
     border-radius: 3px;
+    transition: all 0.3s ease-in-out;
 }
 
 .sofia-font {
@@ -73,4 +74,10 @@ img {
 
 .inline-padding {
     padding-inline: 3vw;
+}
+
+.basic-button:hover {
+    background-color: var(--dark-brown-color);
+    color: var(--white-color);
+    cursor: pointer;
 }

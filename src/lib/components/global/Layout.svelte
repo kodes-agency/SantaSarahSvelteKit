@@ -48,7 +48,7 @@
         align-items: center;
         gap: 30vh;
         padding-inline: 15vw;
-        padding-block: 15vw;
+        padding-block: 30vh;
     }
 
     p {
@@ -168,7 +168,8 @@
     @media only screen and (max-width: 765px) {
         .section-wrapper {
             padding-inline: 5vw;
-            gap: 5vh;
+            gap: 8vh;
+            padding-block: 15vh;
         }
 
         .horizontal > img {

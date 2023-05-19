@@ -28,13 +28,14 @@
         grid-template-columns: repeat(2, 1fr);
         justify-content: center;
         gap: 3vw;
-        width: 70vw;    
+        width: 90vw;    
     }
 
     @media only screen and (max-width: 765px) {
         .section-wrapper {
             grid-template-columns: 1fr;
             width: auto;
+            gap: 0vw;
         }
     }
 </style>

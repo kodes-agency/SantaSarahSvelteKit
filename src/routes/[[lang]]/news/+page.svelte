@@ -2,6 +2,13 @@
     import Archive from "$lib/components/pages/news/Archive.svelte";
     import Current from "$lib/components/pages/news/Current.svelte";
     import Diary from "$lib/components/pages/news/Diary.svelte";
+    import { onMount } from "svelte";
+    import { logoColor, iconColor } from "$lib/functions/store.js";
+
+    onMount(()=>{
+        $logoColor = "black"
+        $iconColor = "black"
+    })
   
       export let data
   </script>

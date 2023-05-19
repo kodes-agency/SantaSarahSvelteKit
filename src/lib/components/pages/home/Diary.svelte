@@ -1,11 +1,29 @@
 <script>
     import { getDate } from '$lib/functions/date'
+    import { onMount } from 'svelte';
     export let title
     export let diary
     export let imgUrl
     export let locale
 
-    const smth = "<u>something</u>"
+    onMount(()=>{
+        const div = document.querySelectorAll('.diary-item')
+
+        div.forEach((element)=>{
+            element.addEventListener('mouseenter', () => {
+                element.childNodes[0].style.transform = 'scale(1.05)'
+                element.childNodes[4].style.color = 'var(--dark-brown-color)'
+                element.childNodes[4].style.opacity = '1'
+            })
+
+            element.addEventListener('mouseleave', () => {
+                element.childNodes[0].style.transform = 'scale(1)'
+                element.childNodes[4].style.color = 'var(--light-brown-color)'
+                element.childNodes[4].style.opacity = '0.8'
+            })
+        })
+    })
+
 </script>
 
 <section>
@@ -75,6 +93,7 @@
         height: 150px;
         object-fit: cover;
         object-position: center;
+        transition: all 0.5s ease-in-out;
     }
 
     p {
@@ -97,6 +116,8 @@
         font-size: 18px;
         line-height: 22px;
         color: var(--light-brown-color);
+        transition: all 0.5s ease-in-out;
+        opacity: 0.8;
     }
 
     a > div {

@@ -1,27 +1,15 @@
 <script>
     export let menu;
-    import { menuState, animationClose, animationOpen } from "$lib/functions/store.js";
+    import { menuState } from "$lib/functions/store.js";
     import gsap from "gsap/dist/gsap"
-    import { onMount } from "svelte";
     let menuData = menu.menu.data.attributes;
     let contact = menu.contactPage.data.attributes;
 
+    const closeTl = gsap.timeline()
+
     function clickHandle() {
-        console.log('close')
         $menuState = true
-        const closeTl = gsap.timeline({
-            onStart: () => {
-                $animationClose = true
-            },
-            onComplete: () => {
-                $animationClose = false
-            }
-        })
-        
-        if ($animationOpen) {
-            
-            return
-        }
+
         closeTl.to('.menu-section-wrapper', {
             duration: 0.7,
             opacity: 0,
@@ -29,7 +17,6 @@
             y: -30,
         }, '-=0.5')
 
-        
         closeTl.to('.modal-menu', {
             duration: 0.5,
             opacity: 0,
@@ -49,6 +36,18 @@
             opacity: 1,
             y: 0,
         })
+
+        closeTl.set('.icon-open', {
+            display: 'block',
+        })
+
+        closeTl.set('.icon-close', {
+            display: 'none',
+        })
+
+
+
+        
     }
 
 </script>
@@ -56,7 +55,7 @@
 <section>
     <div class="menu-section-wrapper">
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <button class="icon" on:click={clickHandle}>
+        <button class="icon-close" on:click={clickHandle}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_452_187)">
                 <path d="M10.94 10L19.6734 1.26671C19.9334 1.00671 19.9334 0.586714 19.6734 0.326714C19.4134 0.0667139 18.9934 0.0667139 18.7334 0.326714L10 9.06005L1.26671 0.326714C1.00671 0.0667139 0.586714 0.0667139 0.326714 0.326714C0.0667139 0.586714 0.0667139 1.00671 0.326714 1.26671L9.06005 10L0.326714 18.7334C0.0667139 18.9934 0.0667139 19.4134 0.326714 19.6734C0.460047 19.8067 0.626714 19.8667 0.800047 19.8667C0.973381 19.8667 1.14005 19.8 1.27338 19.6734L10 10.94L18.7334 19.6734C18.8667 19.8067 19.0334 19.8667 19.2067 19.8667C19.38 19.8667 19.5467 19.8 19.68 19.6734C19.94 19.4134 19.94 18.9934 19.68 18.7334L10.94 10Z" fill="#222221"/>
@@ -154,13 +153,14 @@
 
     }
 
-    .icon {
+    .icon-close {
         position: absolute;
         top: 4vh;
         right: 4vh;
         background-color: transparent;
         border: none;
         z-index: 20;
+        display: none;
     }
 
     .links-container-wrapper {
@@ -277,9 +277,9 @@
             font-size: 22px;
         }
 
-        .icon {
-            top: 3vh;
-            right: 2vh;
+        .icon-close {
+            top: 3.3vh;
+            right: 2.5vh;
         }
 
     

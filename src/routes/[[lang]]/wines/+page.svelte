@@ -7,7 +7,7 @@
     let imgs
     let wines
     let winesWrapperHeight
-
+    import { logoColor, iconColor } from "$lib/functions/store.js";
     
     function enterEffectHandler(event) {
         wines.forEach((wine)=>{
@@ -36,6 +36,8 @@
     }
 
     onMount(()=>{
+        $logoColor = "black"
+        $iconColor = "black"
         let mm = gsap.matchMedia()
         imgs = document.querySelectorAll('.wine-img')  
         wines = document.querySelectorAll('.wine-item-wrapper')

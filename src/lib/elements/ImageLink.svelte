@@ -1,7 +1,31 @@
 <script>
+    import { onMount } from "svelte";
+
     export let img
     export let link
     export let title
+
+
+    onMount(()=>{
+        const div = document.querySelectorAll('.link-wrapper')
+        div.forEach((div)=>{
+            div.addEventListener('mouseenter', ()=>{
+                div.style.backgroundSize = '105%'
+                div.childNodes.forEach((child)=>{
+                    child.style.backgroundColor = 'var(--bg-color)'
+                    child.style.color = 'var(--dark-brown-color)'
+            })
+            })
+            div.addEventListener('mouseleave', ()=>{
+                div.style.backgroundSize = '100%'
+                div.childNodes.forEach((child)=>{
+                    child.style.backgroundColor = 'transparent'
+                    child.style.color = 'var(--bg-color)'
+            })
+            })
+        })
+
+    })
 </script>
 
 <a href={link}>
@@ -12,15 +36,16 @@
 
 <style>
     div {
-        background-size: cover;
+        background-size: 100%;
         background-repeat: no-repeat;
         background-position: center;
-        aspect-ratio: 4/3;
-        width: 35vw;
+        height: 47vh;
+        width: 43.5vw;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        transition: all 1s ease-in-out;
     }
 
     p {
@@ -36,10 +61,12 @@
     @media only screen and (max-width: 765px) {
         div {
             width: 94vw;
+            aspect-ratio: 5/3.4;
+            margin-top: -7.5vh;
+            margin-bottom: -7.5vh;
         }
 
-        div {
-            aspect-ratio: 5/3.4;
-        }
+
+        
     }
 </style>

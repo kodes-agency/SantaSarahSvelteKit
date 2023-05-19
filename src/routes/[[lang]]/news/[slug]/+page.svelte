@@ -1,6 +1,13 @@
 <script>
     import { getDate } from '$lib/functions/date'
     export let data
+    import { onMount } from "svelte";
+    import { logoColor, iconColor } from "$lib/functions/store.js";
+
+    onMount(()=>{
+        $logoColor = "black"
+        $iconColor = "black"
+    })
 </script>
 
 <section>

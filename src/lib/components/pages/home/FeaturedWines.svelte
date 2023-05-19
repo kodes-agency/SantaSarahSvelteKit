@@ -1,9 +1,30 @@
 <script>
+    import { onMount } from "svelte";
+
     export let title = "Заглавие"
     export let subTitle = "Подзаглавие"
     export let button = "Виж всички"
     export let wines
     export let imgUrl
+
+
+    onMount(()=>{
+        const div = document.querySelectorAll('.item-wrapper')
+
+        div.forEach((element)=>{
+            element.addEventListener('mouseenter', () => {
+                element.style.borderTop = '1px solid var(--light-border-color)'
+                element.style.borderLeft = '1px solid var(--light-border-color)'
+                element.style.borderRight = '1px solid var(--light-border-color)'
+            })
+
+            element.addEventListener('mouseleave', () => {
+                element.style.borderTop = '1px solid transparent'
+                element.style.borderLeft = '1px solid transparent'
+                element.style.borderRight = '1px solid transparent'
+            })
+        })
+    })
 </script>
 
 <section>
@@ -60,11 +81,17 @@
     .item-wrapper {
         display: flex;
         flex-direction: column;
+        justify-content: start;
         align-items: center;
+        padding-top: 25px;
         gap: 1.5vh;
-        padding-bottom: 1.5vh;
+        height: 450px;
         border-bottom: 1px solid var(--light-border-color);
+        border-top: 1px solid transparent;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
         border-radius: 3px;
+        transition: all 0.7s ease-in-out;
     }
 
     img {
@@ -99,6 +126,8 @@
         color: var(--dark-brown-color);
 
     }
+
+    
 
     @media only screen and (max-width: 765px) {
         .wines-wrapper {
