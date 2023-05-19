@@ -1,10 +1,10 @@
 <script>
     import { menuState, logoColor, iconColor} from "$lib/functions/store.js";
     import Menu from "$lib/components/global/Menu.svelte";
-    import gsap from "gsap/dist/gsap"
+    import {gsap} from "gsap/dist/gsap"
     export let menu
 
-    const openTl = gsap.timeline()
+    const openTl = gsap.timeline({})
 
     function clickHandle() {
         $menuState = true

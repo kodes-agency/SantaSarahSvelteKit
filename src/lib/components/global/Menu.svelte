@@ -1,11 +1,11 @@
 <script>
     export let menu;
     import { menuState } from "$lib/functions/store.js";
-    import gsap from "gsap/dist/gsap"
+    import {gsap} from "gsap/dist/gsap"
     let menuData = menu.menu.data.attributes;
     let contact = menu.contactPage.data.attributes;
 
-    const closeTl = gsap.timeline()
+    const closeTl = gsap.timeline({})
 
     function clickHandle() {
         $menuState = true

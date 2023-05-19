@@ -6,8 +6,8 @@
     import News from "$lib/components/pages/home/News.svelte";
     import LinkSection from "$lib/components/pages/home/LinkSection.svelte";
     import FeaturedWines from "$lib/components/pages/home/FeaturedWines.svelte";
-    import gsap from "gsap/dist/gsap";
-    import ScrollTrigger from "gsap/dist/ScrollTrigger";
+    import {gsap} from "gsap/dist/gsap";
+    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import { onDestroy, onMount } from "svelte";
     import { logoColor, iconColor } from "$lib/functions/store.js";
     import { navigating } from "$app/stores";

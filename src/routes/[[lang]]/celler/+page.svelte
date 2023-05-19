@@ -5,8 +5,8 @@
 
     import { logoColor, iconColor } from "$lib/functions/store.js";
     import { onDestroy, onMount } from "svelte";
-    import gsap from "gsap/dist/gsap";
-    import ScrollTrigger from "gsap/dist/ScrollTrigger";
+    import {gsap} from "gsap/dist/gsap";
+    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
     gsap.registerPlugin(ScrollTrigger);
     let cellerPage

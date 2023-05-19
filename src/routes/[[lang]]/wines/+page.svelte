@@ -1,6 +1,6 @@
 <script>
-    import gsap from 'gsap/dist/gsap'
-    import ScrollTrigger from "gsap/dist/ScrollTrigger";
+    import {gsap} from 'gsap/dist/gsap'
+    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
     import { onMount } from 'svelte';
     export let data
