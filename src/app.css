@@ -1,0 +1,76 @@
+:root {
+    --bg-color: #F5F3E4;
+    --gray-color: #575756;
+    --dark-brown-color: #847748;
+    --light-brown-color: #A39772;
+    --white-color: #ffffff;
+    --light-border-color: #a3977267;
+
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+a, h1, h2, h3, h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: var(--light-brown-color);
+}
+
+p, li {
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--gray-color);
+    font-size: 20px;
+}
+
+a, li {
+    text-decoration: none;
+}
+
+a {
+    font-family: 'Sofia Sans', sans-serif;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+img {
+    mix-blend-mode: multiply;
+}
+
+.basic-button {
+    border: 1px solid var(--light-brown-color);
+    text-transform: uppercase;
+    font-size: 15px;
+    padding-block: 8px;
+    padding-inline: 20px;
+    border-radius: 3px;
+}
+
+.sofia-font {
+    font-family: 'Sofia Sans', sans-serif;
+}
+
+.inline-padding {
+    padding-inline: 3vw;
+}
