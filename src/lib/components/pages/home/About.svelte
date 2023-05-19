@@ -1,6 +1,4 @@
 <script>
-    import aboutImg from "$lib/assets/home/about.png";
-
     export let img
     export let imgUrl
     export let text = "Текст"
