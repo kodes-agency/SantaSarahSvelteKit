@@ -343,7 +343,7 @@
     }
 
 
-    @media only screen and (max-width: 765px) {
+    @media only screen and (max-width: 900px) {
         .section-wrapper {
             padding-inline: 5vw;
             padding-block: 15vh;

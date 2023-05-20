@@ -31,4 +31,10 @@
         transform: translateX(-50%);
     }
 
+    @media only screen and (max-width: 765px) {
+        img {
+            height: 95vh;
+        }
+    }
+
 </style>

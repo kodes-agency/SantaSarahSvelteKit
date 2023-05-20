@@ -64,6 +64,7 @@
 
     p,a {
         font-size: 15px;
+        text-align: center;
     }
 
     a {
@@ -79,5 +80,17 @@
 
     .meta-wrapper {
         gap: 1vh;
+    }
+
+    @media only screen and (max-width: 765px) {
+        .footer-wrapper {
+            padding-inline: 5vw;
+
+        }
+
+        .links-wrapper {
+            flex-direction: column;
+            gap: 1vh;
+        }
     }
 </style>

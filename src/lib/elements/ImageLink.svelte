@@ -35,12 +35,13 @@
 </a>
 
 <style>
+
     div {
         background-size: 100%;
         background-repeat: no-repeat;
         background-position: center;
-        height: 47vh;
         width: 43.5vw;
+        height: 50vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -60,12 +61,9 @@
 
     @media only screen and (max-width: 765px) {
         div {
-            width: 94vw;
-            aspect-ratio: 5/3.4;
-            margin-top: -7.5vh;
-            margin-bottom: -7.5vh;
-        }
+            width: 90vw;
 
+        }
 
         
     }

@@ -150,7 +150,6 @@
         justify-content: space-around;
         height: 100vh;
         position: relative;
-
     }
 
     .icon-close {
@@ -236,9 +235,15 @@
             display: none;
         }
 
+        .menu-section-wrapper {
+            padding-top: 3.5vh;
+            justify-content: start;
+            gap: 5vh;
+        }
+
         .links-container-wrapper {
             flex-direction: column;
-            gap: 4vh;
+            gap: 3vh;
         }
 
         .links-container {
@@ -250,7 +255,7 @@
         }
 
         .heading {
-            padding-bottom: 1vh;
+            padding-bottom: 0vh;
         }
 
         .about-container {
@@ -274,7 +279,7 @@
         }
 
         a {
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .icon-close {

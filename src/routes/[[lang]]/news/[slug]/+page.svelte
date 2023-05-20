@@ -104,31 +104,31 @@
 
     :global(.diary-content h1) {
         font-size: 25px;
-        line-height: 40px;
+        line-height: 35px;
         padding-top: 20px;
     }
 
     :global(.diary-content h2) {
         font-size: 25px;
-        line-height: 40px;
+        line-height: 35px;
         padding-top: 20px;
     }
 
     :global(.diary-content h3) {
         font-size: 25px;
-        line-height: 40px;
+        line-height: 35px;
         padding-top: 20px;
     }
 
     :global(.diary-content h4) {
         font-size: 25px;
-        line-height: 40px;
+        line-height: 35px;
         padding-top: 20px;
     }
 
     :global(.diary-content h5) {
         font-size: 25px;
-        line-height: 40px;
+        line-height: 35px;
         padding-top: 20px;
     }
 

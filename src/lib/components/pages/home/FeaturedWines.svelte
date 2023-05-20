@@ -132,7 +132,11 @@
     @media only screen and (max-width: 765px) {
         .wines-wrapper {
             grid-template-columns: 1fr;
-            gap: 5vh;
+            gap: 3vh;
+        }
+
+        .section-wrapper {
+            width: 90vw;
         }
 
         h2 {
@@ -141,6 +145,14 @@
 
         h3 {
             font-size: 25px;
+        }
+
+        img {
+            height: 250px;
+        }
+
+        .item-wrapper {
+            height: 400px;
         }
     }
 
