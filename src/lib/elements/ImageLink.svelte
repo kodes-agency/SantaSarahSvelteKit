@@ -62,7 +62,7 @@
     @media only screen and (max-width: 765px) {
         div {
             width: 90vw;
-            height: 31vh;
+            height: 35vh;
         }
 
         

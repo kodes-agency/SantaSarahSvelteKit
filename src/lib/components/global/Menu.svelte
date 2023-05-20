@@ -234,7 +234,7 @@
         .menu-section-wrapper {
             padding-top: 3.5vh;
             justify-content: start;
-            gap: 4vh;
+            gap: 3vh;
         }
 
         .links-container-wrapper {
@@ -283,7 +283,7 @@
         }
 
         #logo {
-            width: 90x;
+            width: 80x;
         }
     
     }
