@@ -8,7 +8,7 @@
             <div class="inline-fields-container-wrapper">
                 <div class="inline-field-container">
                     <label class="sofia-font" for="contactPerson">{form.contactNameField}</label>
-                    <input type="text" name="contactPerson" id="contactPerson">
+                    <input required type="text" name="contactPerson" id="contactPerson">
                 </div>
                 <div class="inline-field-container">
                     <label class="sofia-font" for="companyName">{form.companyNameField}</label>
@@ -24,15 +24,15 @@
                 </p>
                 <div class="check-fields-container">
                     <div class="check-field-container">
-                        <input type="radio" name="businessActivity" id="privatePerson" value="частно лице">
+                        <input required type="radio" name="businessActivity" id="privatePerson" value="частно лице">
                         <label for="privatePerson">{form.privatePerson}</label>
                     </div>
                     <div class="check-field-container">
-                        <input type="radio" name="businessActivity" id="company" value="търговец">
+                        <input required type="radio" name="businessActivity" id="company" value="търговец">
                         <label for="company">{form.company}</label>
                     </div>
                     <div class="check-field-container">
-                        <input type="radio" name="businessActivity" id="horeca" value="хорека">
+                        <input required type="radio" name="businessActivity" id="horeca" value="хорека">
                         <label for="horeca">{form.horeca}</label>
                     </div>
                 </div>
@@ -78,11 +78,11 @@
                 </p>
                 <div class="check-fields-container">
                     <div class="check-field-container">
-                        <input value="true" type="radio" name="knowledge" id="knowledge-yes">
+                        <input required value="true" type="radio" name="knowledge" id="knowledge-yes">
                         <label class="yes" for="knowledge-yes">{form.yes}</label>
                     </div>
                     <div class="check-field-container">
-                        <input value="false" type="radio" name="knowledge" id="knowledge-no">
+                        <input required value="false" type="radio" name="knowledge" id="knowledge-no">
                         <label class="yes" for="knowledge-no">{form.no}</label>
                     </div>
                 </div>
@@ -110,11 +110,11 @@
             <div class="inline-fields-container-wrapper">
                 <div class="inline-field-container">
                     <label class="sofia-font" for="phoneNumber">{form.phoneNumber}</label>
-                    <input type="text" name="phoneNumber" id="phoneNumber">
+                    <input required type="text" name="phoneNumber" id="phoneNumber">
                 </div>
                 <div class="inline-field-container">
                     <label class="sofia-font" for="email">{form.email}</label>
-                    <input type="email" name="email" id="email">
+                    <input required type="email" name="email" id="email">
                 </div>
             </div>
 
@@ -153,13 +153,13 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 10vw;
+        gap: 5vw;
         align-items: center;
         flex-wrap: wrap;
     }
 
     .check-fields-container {
-        gap: 1vh
+        gap: 5vh
     }
 
     .check-field-container {
@@ -167,7 +167,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 1vw;
+        gap: 0.5vw;
         flex-wrap: nowrap;
         padding-top: 1vh;
     }
@@ -187,6 +187,17 @@
         color: var(--light-brown-color)
     }
 
+    input[type="text"], input[type="email"] {
+        border-radius: 3px;
+        border: 1px solid var(--dark-brown-color);
+        background-color: transparent;
+        height: 40px;
+
+        font-size: 16px;
+        text-align: center;
+        color: var(--gray-color);
+    }
+
     
     input {
         border-radius: 3px;
@@ -196,7 +207,6 @@
         font-size: 16px;
         text-align: center;
         color: var(--gray-color);
-        
     }
     
     input[type="checkbox"]{
@@ -233,13 +243,21 @@
             margin-top: 2vh;
         }
 
-        input[type="text"]{
+        input[type="text"], input[type="email"] {
             width: 90vw;
             height: 5vh;
         }
 
         h3 {
             font-size: 30px;
+        }
+
+        .check-field-container {
+            gap: 1.5vw;
+        }
+
+        .check-fields-container {
+            gap: 2vh;
         }
     }
 
