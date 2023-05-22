@@ -51,6 +51,7 @@
                         toggleActions: 'play reset play reset'
                     },
                     opacity: 0.2,
+                    duration: 0.1,
                     ease: 'none'
                 })
             })
