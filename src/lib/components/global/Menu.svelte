@@ -232,9 +232,10 @@
         }
 
         .menu-section-wrapper {
-            padding-top: 3.5vh;
+            padding-top: 2vh;
             justify-content: start;
-            gap: 3vh;
+            gap: 2vh;
+            height: 200vh;
         }
 
         .links-container-wrapper {
@@ -252,6 +253,7 @@
 
         .heading {
             padding-bottom: 0vh;
+            font-size: 18px;
         }
 
         .about-container {
@@ -283,7 +285,7 @@
         }
 
         #logo {
-            width: 80x;
+            max-width: 75px;
         }
     
     }

@@ -10,6 +10,7 @@ export function query(locale) {
                     minorHeading
                     majorHeading
                     text
+                    marker
                   }
                   ... on ComponentGlobalImage {
                     image {

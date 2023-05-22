@@ -14,7 +14,7 @@
                 </div>
             {/if}
             {#if element.__typename == 'ComponentGlobalTitleNText' }
-                <div class="title-text-wrapper">
+                <div class="title-text-wrapper" id={element.marker}>
                     <div class="upper-heading-wrapper">
                         <h2 class="sofia-font">{element.minorHeading}</h2>
                         <div class="line"></div>

@@ -23,7 +23,7 @@
         </div>
         <div class="map">
             <!-- svelte-ignore a11y-missing-attribute -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11585.81385634693!2d27.520498744177758!3d42.79737962315145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a42996ad82a695%3A0x7ebd7d11f3fa62a7!2z0YPQu9C40YbQsCDQmNCy0LDQudC70L4sIDgyMjUgR29yaXRzYQ!5e0!3m2!1sen!2sbg!4v1684491507049!5m2!1sen!2sbg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Santa%20Sarah+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="400" frameborder="0"></iframe>
         </div>
     </div>
 </section>
@@ -64,6 +64,7 @@
 
     .map {
         width: 100%;
+        filter: grayscale(30%);
     }
 
     .map > iframe {

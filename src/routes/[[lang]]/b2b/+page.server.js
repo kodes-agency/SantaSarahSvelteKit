@@ -1,13 +1,16 @@
 import { query } from '$lib/queries/b2bQuery'
+import { mutation } from '$lib/queries/b2bMutation'
+
+let uri
 
 export const load = async ({fetch, locals}) => {
-  let uri = locals.apiUri
+  uri = locals.apiUri
   const fetchOptions = {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(query(locals.locale))
   }
-
+  
   const response = await fetch(uri,fetchOptions)
 
   if(response.status === 404) {
@@ -23,6 +26,54 @@ export const load = async ({fetch, locals}) => {
   return {
     imgUrl: locals.imgUrl,
     locale: locals.locale,
-    b2b: json?.data.b2BPage?.data?.attributes
+    b2b: json?.data.b2BPage?.data?.attributes,
+    form: json?.data.contactForm.data?.attributes
+  }
+}
+
+export const actions = {
+  default: async ({request}) =>{
+    const data = await request.formData()
+
+    const email = data.get('email')
+    const phoneNumber = data.get('phoneNumber')
+    const currentOffering = JSON.parse(data.get('offering'))
+    const knowledge = JSON.parse(data.get('knowledge'))
+    const redWines = data.getAll('redWines')
+    const whiteWines = data.getAll('whiteWines')
+    const roseWines = data.getAll('roseWines')
+    const collectionWines = data.getAll('collectionWines')
+    const visits = data.getAll('visits')
+    const businessActivity = data.get('businessActivity')
+    const companyName = data.get('companyName')
+    const contactPerson = data.get('contactPerson')
+
+    const interestsArray = [...redWines, ...whiteWines, ...roseWines, ...collectionWines, ...visits]
+    const interests = interestsArray.join(', ')
+    console.log(mutation(email, phoneNumber, currentOffering, knowledge, interests, businessActivity, companyName, contactPerson))
+
+
+    const fetchOptions = {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        data: {
+          "email": email,
+          "phoneNumber": phoneNumber,
+          "currentOffering": currentOffering,
+          "knowledge": knowledge,
+          "interests": interests,
+          "businessActivity": businessActivity,
+          "companyName": companyName,
+          "contactPerson": contactPerson
+        }
+      })
+    }
+    
+    const response = await fetch("https://api.santa-sarah.com/api/messages",fetchOptions)
+  
+    const json = await response.json()
+    console.log(json)
+
   }
 }

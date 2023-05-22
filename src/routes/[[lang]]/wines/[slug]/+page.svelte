@@ -1,15 +1,10 @@
 <script>
     import { getDate } from '$lib/functions/monthYear'
     export let data
-    let pageData = data.singleWine.singleWinePage.data.attributes
-    let wineData = data.singleWine.vina.data.attributes
-    import { onMount } from "svelte";
-    import { logoColor, iconColor } from "$lib/functions/store.js";
+    $: pageData = data.singleWine.singleWinePage.data.attributes
+    $: wineData = data.singleWine.vina.data.attributes
 
-    onMount(()=>{
-        $logoColor = "black"
-        $iconColor = "black"
-    })
+
 
 </script>
 

@@ -1,62 +1,46 @@
 <script>
     import Layout from "$lib/components/global/Layout.svelte";
     import HeroImage from "$lib/components/global/HeroImage.svelte";
+    import { logoColor, iconColor } from "$lib/functions/store.js";
+    import { onMount } from "svelte";
     export let data
 
-    import { logoColor, iconColor } from "$lib/functions/store.js";
-    import { onDestroy, onMount } from "svelte";
-    import {gsap} from "gsap/dist/gsap";
-    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
-
-    gsap.registerPlugin(ScrollTrigger);
-    let cellerPage
-
-    onMount(()=>{
-      const vh = (coef) => window.innerHeight * (coef/100);
-        $logoColor = "white"
-        $iconColor = "white"
-      const ctx = gsap.context(()=>{
-        ScrollTrigger.create({
-            trigger: cellerPage,
-            start: vh(100)+"top",
-            onEnter: () => {
+    let heroHeight
+    function scrollHandler (){
+        let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
+            if(scrollTop + 50 > heroHeight){
                 $logoColor = "black"
                 $iconColor = "black"
-            },
-            onEnterBack: () => {
-                $logoColor = "black"
-                $iconColor = "black"
-            },
-            onLeave: () => {
-                $logoColor = "white"
-                $iconColor = "white"
-            },
-            onLeaveBack: () => {
+            } else {
                 $logoColor = "white"
                 $iconColor = "white"
             }
-        })
-        return () => {
-            ctx.revert()
-        }
-      })
-    })
+    }
 
-    onDestroy(()=>{
-      $logoColor = "black"
-      $iconColor = "black"
+    onMount(()=>{
+        $logoColor = "white"
+        $iconColor = "white"
+        heroHeight = document.querySelector('.hero-img').offsetHeight
+
+        document.addEventListener('scroll', scrollHandler)
+
+        return () => {
+            document.removeEventListener('scroll', scrollHandler)
+            $logoColor = "black"
+            $iconColor = "black"
+        }
     })
   </script>
 
-<div class="celler-page" bind:this={cellerPage}>
-  <HeroImage
-    img={data.celler?.heroImage}
-    imgUrl={data.imgUrl}
-  >
-  </HeroImage>
+  <div class="hero-img">
+    <HeroImage
+      img={data.celler?.heroImage}
+      imgUrl={data.imgUrl}
+    >
+    </HeroImage>
+  </div>
   <Layout
     layout={data.celler?.cellerPageLayout}
     imgUrl={data.imgUrl}
   ></Layout>
-</div>
   

@@ -1,58 +1,50 @@
 <script>
     import Layout from "$lib/components/global/Layout.svelte";
     import HeroImage from "$lib/components/global/HeroImage.svelte";
-    export let data
+    import Form from "$lib/components/pages/b2b/Form.svelte";
 
     import { logoColor, iconColor } from "$lib/functions/store.js";
-    import { onDestroy, onMount } from "svelte";
-    import {gsap} from "gsap/dist/gsap";
-    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
+    import { onMount } from "svelte";
+    export let data
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    let b2bPage
-
-    onMount(()=>{
-      const vh = (coef) => window.innerHeight * (coef/100);
-        $logoColor = "white"
-        $iconColor = "white"
-        ScrollTrigger.create({
-            trigger: b2bPage,
-            start: vh(100)+"top",
-            onEnter: () => {
+    let heroHeight
+    function scrollHandler (){
+        let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
+            if(scrollTop + 50 > heroHeight){
                 $logoColor = "black"
                 $iconColor = "black"
-            },
-            onEnterBack: () => {
-                $logoColor = "black"
-                $iconColor = "black"
-            },
-            onLeave: () => {
-                $logoColor = "white"
-                $iconColor = "white"
-            },
-            onLeaveBack: () => {
+            } else {
                 $logoColor = "white"
                 $iconColor = "white"
             }
-        })
-    })
+    }
 
-    onDestroy(()=>{
-      $logoColor = "black"
-      $iconColor = "black"
+    onMount(()=>{
+        $logoColor = "white"
+        $iconColor = "white"
+        heroHeight = document.querySelector('.hero-img').offsetHeight
+
+        document.addEventListener('scroll', scrollHandler)
+
+        return () => {
+            document.removeEventListener('scroll', scrollHandler)
+            $logoColor = "black"
+            $iconColor = "black"
+        }
     })
   </script>
 
-<div class="b2b-page" bind:this={b2bPage}>
+<div class="hero-img">
   <HeroImage
     img={data.b2b?.heroImage}
     imgUrl={data.imgUrl}
   >
   </HeroImage>
-  <Layout
-    layout={data.b2b?.b2bPageLayout}
-    imgUrl={data.imgUrl}
-  ></Layout>
 </div>
-  
+<Layout
+  layout={data.b2b?.b2bPageLayout}
+  imgUrl={data.imgUrl}
+></Layout>
+<Form
+  form={data.form}
+></Form>

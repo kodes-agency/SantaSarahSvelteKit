@@ -1,13 +1,12 @@
 <script>
-    import {gsap} from 'gsap/dist/gsap'
-    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
-    gsap.registerPlugin(ScrollTrigger);
+    import { gsap } from 'gsap/dist/gsap'
+    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
     import { onMount } from 'svelte';
     export let data
+    gsap.registerPlugin(ScrollTrigger);
     let imgs
     let wines
     let winesWrapperHeight
-    import { logoColor, iconColor } from "$lib/functions/store.js";
     
     function enterEffectHandler(event) {
         wines.forEach((wine)=>{
@@ -36,8 +35,6 @@
     }
 
     onMount(()=>{
-        $logoColor = "black"
-        $iconColor = "black"
         let mm = gsap.matchMedia()
         imgs = document.querySelectorAll('.wine-img')  
         wines = document.querySelectorAll('.wine-item-wrapper')
