@@ -2,6 +2,7 @@
     export let menu;
     import { menuState } from "$lib/functions/store.js";
     import {gsap} from "gsap/dist/gsap"
+    import { filter } from '$lib/functions/store'
     let menuData = menu.menu.data.attributes;
     let contact = menu.contactPage.data.attributes;
 
@@ -86,14 +87,29 @@
                 </div>
             </div>
             <div class="links-container">
-                <a on:click={clickHandle} href="/wines">
+                <a on:click={()=>{
+                    $filter = 'all'
+                    clickHandle()
+                }} href="/wines">
                     <p class="heading sofia-font">{menuData.ourWines}</p>
                 </a>
                 <div class="links-wrapper">
-                    <a on:click={clickHandle} href="/wines">{menuData.linkWhites}</a>
-                    <a on:click={clickHandle} href="/wines">{menuData.linkReds}</a>
-                    <a on:click={clickHandle} href="/wines">{menuData.linkRoses}</a>
-                    <a on:click={clickHandle} href="/wines">{menuData.linkCollections}</a>
+                    <a on:click={()=>{
+                        $filter = 'white'
+                        clickHandle()
+                    }} href="/wines">{menuData.linkWhites}</a>
+                    <a on:click={()=>{
+                        $filter = 'red'
+                        clickHandle()
+                    }} href="/wines">{menuData.linkReds}</a>
+                    <a on:click={()=>{
+                        $filter = 'rose'
+                        clickHandle()
+                    }} href="/wines">{menuData.linkRoses}</a>
+                    <a on:click={()=>{
+                        $filter = 'collection'
+                        clickHandle()
+                    }} href="/wines">{menuData.linkCollections}</a>
                 </div>
             </div>
             <div class="links-container">

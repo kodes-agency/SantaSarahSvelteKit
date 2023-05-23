@@ -6,14 +6,24 @@ export function query(locale) {
               attributes {
                 heroHeading
                 heroSubheading
+                showFilters
+                hideFilters
               }
             }
           }
           
-          vinas(locale: "${locale}") {
+          vinas(locale: "${locale}", pagination: {page: 1, pageSize:100}) {
             data {
               id
               attributes {
+                wineType {
+                  data {
+                    attributes {
+                      wineType
+                      filterName
+                    }
+                  }
+                }
                 name
                 shortDescription
                 image {
@@ -27,6 +37,15 @@ export function query(locale) {
                 wineDetails {
                   year
                 }
+              }
+            }
+          }
+
+          wineTypes(locale: "${locale}") {
+            data {
+              attributes {
+                filterName
+                wineType
               }
             }
           }

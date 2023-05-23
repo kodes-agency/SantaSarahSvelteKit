@@ -21,7 +21,7 @@
                 <p class="year sofia-font">
                     {new Date(wineData.wineDetails.year).getFullYear()}
                 </p>
-                <img src="{data.imgUrl+wineData.image.data.attributes.formats.web.url}" alt="{wineData.image.data.attributes.alternativeText}">
+                <img src="{data.imgUrl+wineData.image?.data?.attributes.formats.web.url}" alt="{wineData.image?.data?.attributes.alternativeText}">
                 <p class="description">
                     {wineData.longDescription}
                 </p>

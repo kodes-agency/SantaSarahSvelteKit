@@ -6,3 +6,5 @@ export const animationClose = writable(false);
 
 export const logoColor = writable('black');
 export const iconColor = writable('black');
+
+export const filter = writable('all');

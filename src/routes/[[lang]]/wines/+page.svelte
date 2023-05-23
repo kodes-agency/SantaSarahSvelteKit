@@ -2,11 +2,86 @@
     import { gsap } from 'gsap/dist/gsap'
     import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
     import { onMount } from 'svelte';
+    import { filter } from '$lib/functions/store'
     export let data
     gsap.registerPlugin(ScrollTrigger);
+    let mm = gsap.matchMedia()
+
     let imgs
     let wines
     let winesWrapperHeight
+    let imgWrapper
+    let filterHeading
+    let filterStatus = false
+    let timeOutId
+
+    let wineList = data.wines.vinas.data
+
+
+
+    $: { if($filter == 'all'){
+            wineList = data.wines.vinas.data
+            
+        } else {
+            wineList = data.wines.vinas.data.filter((wine)=>{
+                return wine.attributes.wineType.data.attributes.filterName == $filter
+            })
+        }
+    }
+
+
+    async function setFilter (value){
+        $filter = value
+        if($filter == 'all'){
+            wineList = await data.wines.vinas.data
+        } else {
+            wineList = await data.wines.vinas.data.filter((wine)=>{
+                return wine.attributes.wineType.data.attributes.filterName == $filter
+            })
+        }
+
+        imgs = document.querySelectorAll('.wine-img')  
+        wines = document.querySelectorAll('.wine-item-wrapper')
+        imgWrapper = document.querySelector('.wine-img-absolute-wrapper')
+        winesWrapperHeight = document.querySelector('.wines-wrapper').clientHeight
+        imgWrapper.style.height = `${winesWrapperHeight}px`
+
+        wines.forEach((wine)=>{
+            wine.removeEventListener('mouseenter', (event)=>{
+                enterEffectHandler(event)
+            })
+
+            wine.removeEventListener('mouseleave', (event)=>{
+                leaveEffectHandler(event)
+            })
+
+
+            wine.addEventListener('mouseenter', (event)=>{
+                enterEffectHandler(event)
+            })
+
+            wine.addEventListener('mouseleave', (event)=>{
+                leaveEffectHandler(event)
+            })
+        })
+
+        mm.add("(max-width: 768px)", ()=>{
+            wines.forEach((wine)=>{
+                gsap.from(wine, {
+                    scrollTrigger: {
+                        trigger: wine,
+                        start: 'top 40%',
+                        end: 'bottom 30%',
+                        toggleActions: 'play reset play reset'
+                    },
+                    opacity: 0.2,
+                    duration: 0.1,
+                    ease: 'none'
+                })
+            })
+        })
+    }
+
     
     function enterEffectHandler(event) {
         wines.forEach((wine)=>{
@@ -34,12 +109,74 @@
         })
     }
 
+    function filterButtonHandler(){
+        const tlOpen = gsap.timeline()
+        const tlClose = gsap.timeline()
+        let filterContainer = document.querySelector('.filter-container')
+        let filterWrapper = document.querySelector('.filter-wrapper')
+        let wineWrapper = document.querySelector('.wine-img-absolute-wrapper')
+        mm.add("(max-width: 768px)", ()=>{
+            wines.forEach((wine)=>{
+                gsap.from(wine, {
+                    scrollTrigger: {
+                        trigger: wine,
+                        start: 'top 40%',
+                        end: 'bottom 30%',
+                        toggleActions: 'play reset play reset'
+                    },
+                    opacity: 0.2,
+                    duration: 0.1,
+                    ease: 'none'
+                })
+            })
+        })
+        if(filterStatus == false){
+            gsap.set(wineWrapper, {
+                top: "calc(50vh + 230px)"
+            })
+
+            tlOpen.to(filterContainer, {
+                zIndex: 1,
+                height: '200px',
+                opacity: 1,
+                duration: 0.5,
+                ease: 'power2.inOut',
+            })
+
+            tlOpen.to(filterWrapper, {
+                opacity: 1,
+                duration: 0.5,
+                ease: 'power2.inOut'
+            }, '-=0.2')
+            
+        } else {
+            gsap.set(wineWrapper, {
+                top: "50vh"
+            })
+
+            tlClose.to(filterWrapper, {
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power2.inOut'
+            })
+
+            tlClose.to(filterContainer, {
+                height: '0px',
+                duration: 0.5,
+                opacity: 0,
+                ease: 'power2.inOut',
+                zIndex: -1,
+            }, '-=0.2')
+
+        }
+        filterStatus = !filterStatus
+    }
+
     onMount(()=>{
-        let mm = gsap.matchMedia()
         imgs = document.querySelectorAll('.wine-img')  
         wines = document.querySelectorAll('.wine-item-wrapper')
+        imgWrapper = document.querySelector('.wine-img-absolute-wrapper')
         winesWrapperHeight = document.querySelector('.wines-wrapper').clientHeight
-        const imgWrapper = document.querySelector('.wine-img-absolute-wrapper')
 
         mm.add("(max-width: 768px)", ()=>{
             wines.forEach((wine)=>{
@@ -69,8 +206,19 @@
                 leaveEffectHandler(event)
             })
         })
-    })
 
+        return(()=>{
+            wines.forEach((wine)=>{
+                wine.removeEventListener('mouseenter', (event)=>{
+                    enterEffectHandler(event)
+                })
+    
+                wine.removeEventListener('mouseleave', (event)=>{
+                    leaveEffectHandler(event)
+                })
+            })
+        })
+    })
 </script>
 
 <section>
@@ -80,22 +228,46 @@
                 {data.wines?.winesPage.data.attributes.heroHeading}
             </h2>
             <div class="line"></div>
-            <h3>
-                {data.wines?.winesPage.data.attributes.heroSubheading}
+            <h3 class="filter-heading" bind:this={filterHeading}>
+                {#if $filter == 'all' }
+                   {data.wines?.winesPage.data.attributes.heroSubheading}
+                {:else}
+                    {wineList[0].attributes?.wineType?.data?.attributes?.wineType}
+                {/if}
             </h3>
+
+            <section class="filter-section">
+                <button on:click={()=>{filterButtonHandler()}} class="filter-button sofia-font">
+                    {#if filterStatus }
+                        {data.wines?.winesPage.data.attributes.hideFilters} ↑
+                    {:else}
+                        {data.wines?.winesPage.data.attributes.showFilters} ↓
+                    {/if}
+                </button>
+                <div class="filter-container">
+                    <div class="filter-wrapper">
+                        <button class="filter-item sofia-font" on:click={()=>{setFilter("all")}}>
+                                {data.wines?.winesPage.data.attributes.heroSubheading}
+                        </button>
+                        {#each data.wines.wineTypes.data as element }
+                            <button class="filter-item sofia-font" on:click={()=>{setFilter(element.attributes.filterName)}}>{element.attributes.wineType}</button>
+                        {/each}
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="wines-wrapper">
+        <div class="wines-wrapper" bind:this={winesWrapperHeight}>
             <div class="wine-img-absolute-wrapper">
                 <div class="wine-img-wrapper">
-                    {#each data.wines.vinas.data as element, id }
-                        <img class="wine-img" id="{id}" src="{data.imgUrl+element.attributes.image.data.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                    {#each wineList as element, id }
+                        <img class="wine-img" id="{id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
                     {/each}
                 </div>
             </div>
-            {#each data.wines.vinas.data as element,id }
+            {#each wineList as element,id }
                 <a href="/wines/{element.id}">
                     <div class="wine-item-wrapper" id={id}>
-                        <img class="wine-img-mobile" id="{id}" src="{data.imgUrl+element.attributes.image.data.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                        <img class="wine-img-mobile" id="{id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
                         <h5>{element.attributes.name}</h5>
                         <p class="year">{new Date(element.attributes.wineDetails.year).getFullYear()}</p>
                         <p class="description">{element.attributes.shortDescription}</p>
@@ -108,13 +280,12 @@
 
 <style>
     .section-wrapper {
-        min-height: 100vh;
+        min-height: 150vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: start;
         gap: 10vh;
-        padding-inline: 3vw;
         padding-top: 30vh;
         padding-bottom: 10vh;
     }
@@ -124,6 +295,7 @@
         flex-direction: column;
         align-items: center;
         gap: 2vh;
+        width: 100%;
     }
 
     h2 {
@@ -134,6 +306,10 @@
     h3 {
         font-size: 40px;
         color: var(--gray-color);
+    }
+
+    .filter-heading {
+        transition: all 0.5s ease-in-out;
     }
     
     .line {
@@ -146,6 +322,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 30vw;
+        padding-inline: 3vw;
     }
 
     .wine-item-wrapper {
@@ -155,6 +332,56 @@
         flex-direction: column;
         gap: 1.5vh;
         transition: all 0.5s ease-in-out;
+    }
+
+    .filter-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2vh;
+        width: 100%;
+    }
+
+    .filter-container {
+        background-color: var(--bg-color);
+        mix-blend-mode: multiply;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 0;
+        z-index: -1;
+    }
+
+    .filter-wrapper {
+        opacity: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4vh;
+        padding-inline: 5vw;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        font-size: 18px;
+        color: var(--light-brown-color);
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+        text-transform: uppercase;
+    }
+
+    button:hover {
+        text-decoration: underline;
+    }
+
+    .filter-button{
+        font-size: 14px;
     }
 
     h5,p {
