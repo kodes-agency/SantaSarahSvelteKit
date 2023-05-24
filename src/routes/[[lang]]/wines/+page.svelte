@@ -20,6 +20,7 @@
     const ctx = gsap.context({})
 
 
+
     function filterHandler(){
         setTimeout(()=>{
             ctx.add(()=>{
@@ -41,20 +42,17 @@
                         })
                     })
                 })
-        
-                
                 mm.add("(max-width: 768px)", ()=>{
-    
                     document.querySelectorAll('.wine-item-wrapper').forEach((wine)=>{
                         gsap.from(wine, {
                             scrollTrigger: {
                                 trigger: wine,
-                                start: 'top 40%',
+                                start: 'top 35%',
                                 end: 'bottom 30%',
                                 toggleActions: 'play reset play reset'
                             },
                             opacity: 0.2,
-                            duration: 0.1,
+                            duration: 0.01,
                             ease: 'none'
                         })
                     })
@@ -182,22 +180,23 @@
 
         filterHandler()
         return(()=>{
-            ctx.revert()
-            wines.forEach((wine)=>{
-                wine.removeEventListener('mouseenter', (event)=>{
-                    enterEffectHandler(event)
-                })
-    
-                wine.removeEventListener('mouseleave', (event)=>{
-                    leaveEffectHandler(event)
-                })
-            })
+            // wines.forEach((wine)=>{
+            //     wine.removeEventListener('mouseenter', (event)=>{
+            //         enterEffectHandler(event)
+            //     })
+                
+            //     wine.removeEventListener('mouseleave', (event)=>{
+            //         leaveEffectHandler(event)
+            //     })
+            // })
+            
+            // links.forEach((link)=>{
+            //     link.removeEventListener('click', ()=>{
+            //         filterHandler()
+            //     })
+            // })
 
-            links.forEach((link)=>{
-            link.removeEventListener('click', ()=>{
-                filterHandler()
-            })
-        })
+            ctx.revert()
         })
     })
 </script>
