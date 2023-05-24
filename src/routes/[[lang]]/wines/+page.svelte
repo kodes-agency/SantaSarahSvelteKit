@@ -22,6 +22,7 @@
 
 
     function filterHandler(){
+        ctx.revert()
         setTimeout(()=>{
             ctx.add(()=>{
                 mm.add("(min-width: 769px)", ()=>{
@@ -59,6 +60,7 @@
                 })
             })
         }, 500)
+        
     }
 
 
@@ -78,7 +80,6 @@
 
 
     async function setFilter (value){
-        ctx.revert()
         $filter = value
         if($filter == 'all'){
             wineList = await data.wines.vinas.data
@@ -172,7 +173,6 @@
         if($page.url.pathname == '/wines'){
             links.forEach((link)=>{
                 link.addEventListener('click', ()=>{
-                    ctx.revert()
                     filterHandler()
                 })
             })
