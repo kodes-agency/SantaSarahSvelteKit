@@ -3,9 +3,13 @@
     import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
     import { onMount } from 'svelte';
     import { filter } from '$lib/functions/store'
+    import { page } from '$app/stores'
+
     export let data
     gsap.registerPlugin(ScrollTrigger);
     let mm = gsap.matchMedia()
+
+    let wineList = data.wines.vinas.data
 
     let imgs
     let wines
@@ -13,15 +17,59 @@
     let imgWrapper
     let filterHeading
     let filterStatus = false
-    let timeOutId
-
-    let wineList = data.wines.vinas.data
+    const ctx = gsap.context({})
 
 
-
-    $: { if($filter == 'all'){
-            wineList = data.wines.vinas.data
+    function filterHandler(){
+        setTimeout(()=>{
+            ctx.add(()=>{
+                mm.add("(min-width: 769px)", ()=>{
+                    imgs = document.querySelectorAll('.wine-img')  
+                    wines = document.querySelectorAll('.wine-item-wrapper')
+                    imgWrapper = document.querySelector('.wine-img-absolute-wrapper')
+                    winesWrapperHeight = document.querySelector('.wines-wrapper').clientHeight
+                    if(imgWrapper){
+                        imgWrapper.style.height = `${winesWrapperHeight}px`
+                    }
+                    wines.forEach((wine)=>{
+                        wine.addEventListener('mouseenter', (event)=>{
+                            enterEffectHandler(event)
+                        })
             
+                        wine.addEventListener('mouseleave', (event)=>{
+                            leaveEffectHandler(event)
+                        })
+                    })
+                })
+        
+                
+                mm.add("(max-width: 768px)", ()=>{
+    
+                    document.querySelectorAll('.wine-item-wrapper').forEach((wine)=>{
+                        gsap.from(wine, {
+                            scrollTrigger: {
+                                trigger: wine,
+                                start: 'top 40%',
+                                end: 'bottom 30%',
+                                toggleActions: 'play reset play reset'
+                            },
+                            opacity: 0.2,
+                            duration: 0.1,
+                            ease: 'none'
+                        })
+                    })
+                })
+            })
+        }, 500)
+    }
+
+
+
+
+    $: { 
+        if($filter == 'all'){
+                wineList = data.wines.vinas.data
+    
         } else {
             wineList = data.wines.vinas.data.filter((wine)=>{
                 return wine.attributes.wineType.data.attributes.filterName == $filter
@@ -30,7 +78,9 @@
     }
 
 
+
     async function setFilter (value){
+        ctx.revert()
         $filter = value
         if($filter == 'all'){
             wineList = await data.wines.vinas.data
@@ -40,96 +90,42 @@
             })
         }
 
-        imgs = document.querySelectorAll('.wine-img')  
-        wines = document.querySelectorAll('.wine-item-wrapper')
-        imgWrapper = document.querySelector('.wine-img-absolute-wrapper')
-        winesWrapperHeight = document.querySelector('.wines-wrapper').clientHeight
-        imgWrapper.style.height = `${winesWrapperHeight}px`
-
-        wines.forEach((wine)=>{
-            wine.removeEventListener('mouseenter', (event)=>{
-                enterEffectHandler(event)
-            })
-
-            wine.removeEventListener('mouseleave', (event)=>{
-                leaveEffectHandler(event)
-            })
-
-
-            wine.addEventListener('mouseenter', (event)=>{
-                enterEffectHandler(event)
-            })
-
-            wine.addEventListener('mouseleave', (event)=>{
-                leaveEffectHandler(event)
-            })
-        })
-
-        mm.add("(max-width: 768px)", ()=>{
-            wines.forEach((wine)=>{
-                gsap.from(wine, {
-                    scrollTrigger: {
-                        trigger: wine,
-                        start: 'top 40%',
-                        end: 'bottom 30%',
-                        toggleActions: 'play reset play reset'
-                    },
-                    opacity: 0.2,
-                    duration: 0.1,
-                    ease: 'none'
-                })
-            })
-        })
+        filterHandler()
     }
 
     
     function enterEffectHandler(event) {
         wines.forEach((wine)=>{
-            if(wine.id != event.target.id){
-                wine.style.opacity = '0.25'
-                imgs.forEach((img)=>{
-                    if(img.id == event.target.id){
-                        img.style.opacity = '1'
-                    }
-                })
-            }
+            wine.style.opacity = '0.25'
+            imgs.forEach((img)=>{
+                img.style.opacity = '0'
+            })
+
+            event.target.style.opacity = '1'
+            imgs.forEach((img)=>{
+                if(img.id == event.target.id){
+                    img.style.opacity = '1'
+                }
+            })
         })
     }
 
     function leaveEffectHandler(event) {
         wines.forEach((wine)=>{
-            if(wine.id != event.target.id){
-                wine.style.opacity = '1'
-                imgs.forEach((img)=>{
-                    if(img.id == event.target.id){
-                        img.style.opacity = '0'
-                    }
-                })
-            }
+            wine.style.opacity = '1'
+            imgs.forEach((img)=>{
+                img.style.opacity = '0'
+            })
         })
     }
 
     function filterButtonHandler(){
         const tlOpen = gsap.timeline()
         const tlClose = gsap.timeline()
+
         let filterContainer = document.querySelector('.filter-container')
         let filterWrapper = document.querySelector('.filter-wrapper')
         let wineWrapper = document.querySelector('.wine-img-absolute-wrapper')
-        mm.add("(max-width: 768px)", ()=>{
-            wines.forEach((wine)=>{
-                gsap.from(wine, {
-                    scrollTrigger: {
-                        trigger: wine,
-                        start: 'top 40%',
-                        end: 'bottom 30%',
-                        toggleActions: 'play reset play reset'
-                    },
-                    opacity: 0.2,
-                    duration: 0.1,
-                    ease: 'none'
-                })
-            })
-        })
         if(filterStatus == false){
             gsap.set(wineWrapper, {
                 top: "calc(50vh + 230px)"
@@ -169,45 +165,24 @@
             }, '-=0.2')
 
         }
+
         filterStatus = !filterStatus
     }
 
     onMount(()=>{
-        imgs = document.querySelectorAll('.wine-img')  
-        wines = document.querySelectorAll('.wine-item-wrapper')
-        imgWrapper = document.querySelector('.wine-img-absolute-wrapper')
-        winesWrapperHeight = document.querySelector('.wines-wrapper').clientHeight
-
-        mm.add("(max-width: 768px)", ()=>{
-            wines.forEach((wine)=>{
-                gsap.from(wine, {
-                    scrollTrigger: {
-                        trigger: wine,
-                        start: 'top 40%',
-                        end: 'bottom 30%',
-                        toggleActions: 'play reset play reset'
-                    },
-                    opacity: 0.2,
-                    duration: 0.1,
-                    ease: 'none'
+        let links = document.querySelectorAll('.menu-link')
+        if($page.url.pathname == '/wines'){
+            links.forEach((link)=>{
+                link.addEventListener('click', ()=>{
+                    ctx.revert()
+                    filterHandler()
                 })
             })
-        })
+        }
 
-        imgWrapper.style.height = `${winesWrapperHeight}px`
-
-
-        wines.forEach((wine)=>{
-            wine.addEventListener('mouseenter', (event)=>{
-                enterEffectHandler(event)
-            })
-
-            wine.addEventListener('mouseleave', (event)=>{
-                leaveEffectHandler(event)
-            })
-        })
-
+        filterHandler()
         return(()=>{
+            ctx.revert()
             wines.forEach((wine)=>{
                 wine.removeEventListener('mouseenter', (event)=>{
                     enterEffectHandler(event)
@@ -217,6 +192,12 @@
                     leaveEffectHandler(event)
                 })
             })
+
+            links.forEach((link)=>{
+            link.removeEventListener('click', ()=>{
+                filterHandler()
+            })
+        })
         })
     })
 </script>
@@ -249,25 +230,28 @@
                         <button class="filter-item sofia-font" on:click={()=>{setFilter("all")}}>
                                 {data.wines?.winesPage.data.attributes.heroSubheading}
                         </button>
-                        {#each data.wines.wineTypes.data as element }
-                            <button class="filter-item sofia-font" on:click={()=>{setFilter(element.attributes.filterName)}}>{element.attributes.wineType}</button>
-                        {/each}
+                        <div class="category-wrapper">
+                            {#each data.wines.wineTypes.data as element }
+                                <button class="filter-item sofia-font" on:click={()=>{setFilter(element.attributes.filterName)}}>{element.attributes.wineType}</button>
+                            {/each}
+                        </div>
                     </div>
+                            
                 </div>
             </section>
         </div>
         <div class="wines-wrapper" bind:this={winesWrapperHeight}>
             <div class="wine-img-absolute-wrapper">
                 <div class="wine-img-wrapper">
-                    {#each wineList as element, id }
-                        <img class="wine-img" id="{id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
+                    {#each wineList as element }
+                        <img class="wine-img" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
                     {/each}
                 </div>
             </div>
-            {#each wineList as element,id }
+            {#each wineList as element }
                 <a href="/wines/{element.id}">
-                    <div class="wine-item-wrapper" id={id}>
-                        <img class="wine-img-mobile" id="{id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                    <div class="wine-item-wrapper" id={element.id}>
+                        <img class="wine-img-mobile" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
                         <h5>{element.attributes.name}</h5>
                         <p class="year">{new Date(element.attributes.wineDetails.year).getFullYear()}</p>
                         <p class="description">{element.attributes.shortDescription}</p>
@@ -358,12 +342,18 @@
     .filter-wrapper {
         opacity: 0;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         flex-wrap: wrap;
         justify-content: center;
         gap: 4vh;
         padding-inline: 5vw;
+    }
+
+    .category-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 10vh;
     }
 
     button {
@@ -472,6 +462,15 @@
             object-fit: contain;
             transform: rotate(90deg);
             margin-bottom: -19vw;
+        }
+
+        .category-wrapper {
+            flex-direction: column;
+            gap: 1vh;
+        }
+
+        .filter-wrapper {
+            gap: 1.5vh;
         }
     }
     

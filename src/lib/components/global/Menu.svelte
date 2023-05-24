@@ -91,22 +91,22 @@
                     $filter = 'all'
                     clickHandle()
                 }} href="/wines">
-                    <p class="heading sofia-font">{menuData.ourWines}</p>
+                    <p class="heading sofia-font menu-link">{menuData.ourWines}</p>
                 </a>
                 <div class="links-wrapper">
-                    <a on:click={()=>{
+                    <a class="menu-link" on:click={()=>{
                         $filter = 'white'
                         clickHandle()
                     }} href="/wines">{menuData.linkWhites}</a>
-                    <a on:click={()=>{
+                    <a class="menu-link" on:click={()=>{
                         $filter = 'red'
                         clickHandle()
                     }} href="/wines">{menuData.linkReds}</a>
-                    <a on:click={()=>{
+                    <a class="menu-link" on:click={()=>{
                         $filter = 'rose'
                         clickHandle()
                     }} href="/wines">{menuData.linkRoses}</a>
-                    <a on:click={()=>{
+                    <a class="menu-link" on:click={()=>{
                         $filter = 'collection'
                         clickHandle()
                     }} href="/wines">{menuData.linkCollections}</a>

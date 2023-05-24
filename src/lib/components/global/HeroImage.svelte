@@ -33,7 +33,7 @@
 
     @media only screen and (max-width: 765px) {
         img {
-            height: 95vh;
+            height: 100dvh;
         }
     }
 
