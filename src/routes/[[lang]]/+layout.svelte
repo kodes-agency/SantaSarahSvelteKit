@@ -7,19 +7,17 @@
     import '@beyonk/gdpr-cookie-consent-banner/style.css' // optional, you can also define your own styles
     import { Banner as GdprBanner } from '@beyonk/gdpr-cookie-consent-banner'
     
+    
     export let data;
 
     function initAnalytics () {
         // do something with segment.io or google analytics etc
-        console.log('init analytics')
     }
     function initTracking () {
         // do something with segment.io or google analytics etc
-        console.log('init analytics')
     }
     function initNecessary () {
         // do something with segment.io or google analytics etc
-        console.log('init analytics')
     }
 </script>
 
@@ -38,7 +36,7 @@
     content = {data.menu.ageConsent.data.attributes}
     imgUrl = {data.imgUrl}
 ></AgeConsent>
-<main>
+<main class="body">
     <slot></slot>
     <GdprBanner 
         heading={data.menu.cookiesGdpr.data.attributes.cookieHeading}
@@ -130,6 +128,8 @@
     :global(.cookieConsentToggle){
         background: var(--bg-color);
         color: var(--light-brown-color);
+        right: 3vw;
+        bottom: 5.5vh;
     }
 
     :global(.cookieConsentToggle:hover){

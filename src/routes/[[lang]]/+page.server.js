@@ -26,3 +26,21 @@ export const load = async ({fetch, locals}) => {
     home: json?.data.homePage?.data?.attributes
   }
 }
+
+export const actions = {
+  bg: async ({request}) =>{
+    const data = await request.formData()
+    console.log(data)
+
+  },
+
+  en: async ({request}) =>{
+    const data = await request.formData()
+    console.log(data)
+  },
+
+  de: async ({request}) =>{
+    const data = await request.formData()
+    console.log(data)
+  }
+}

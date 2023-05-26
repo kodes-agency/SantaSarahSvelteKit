@@ -20,7 +20,6 @@ export const load = async ({fetch, locals}) => {
 
   const json = await response.json()
 
-  console.log(json.data)
   return {
     imgUrl: locals.imgUrl,
     locale: locals.locale,

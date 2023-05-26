@@ -50,7 +50,6 @@ export const actions = {
 
     const interestsArray = [...redWines, ...whiteWines, ...roseWines, ...collectionWines, ...visits]
     const interests = interestsArray.join(', ')
-    console.log(mutation(email, phoneNumber, currentOffering, knowledge, interests, businessActivity, companyName, contactPerson))
 
 
     const fetchOptions = {
@@ -73,7 +72,6 @@ export const actions = {
     const response = await fetch("https://api.santa-sarah.com/api/messages",fetchOptions)
   
     const json = await response.json()
-    console.log(json)
 
   }
 }
