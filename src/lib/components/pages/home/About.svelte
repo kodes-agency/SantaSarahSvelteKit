@@ -7,7 +7,7 @@
 
 <section>
     <div class="section-wrapper">
-        <img src={imgUrl+img} alt="">
+        <img width="500" height="500" loading="lazy" src={imgUrl+img} alt="">
         <div class="text-wrapper">
             <p>
                 {@html text}
@@ -28,7 +28,8 @@
     }
 
     img {
-        width: 380px
+        width: 380px;
+        height: auto;
     }
 
     p {

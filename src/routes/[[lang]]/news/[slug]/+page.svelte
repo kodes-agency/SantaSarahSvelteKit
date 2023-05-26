@@ -35,7 +35,7 @@
             </div>
             <div class="imgs">
                     {#each data.singleNew.new.data.attributes.image.data as element }
-                        <img src="{data.imgUrl+element.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                        <img width="500" height="500" loading="lazy" src="{data.imgUrl+element.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
                     {/each}
             </div>
             <div class="right-column mobile">

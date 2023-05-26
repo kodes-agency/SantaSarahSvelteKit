@@ -36,8 +36,8 @@
         <div class="meta-wrapper">
             <p>{address}</p>
             <p>{state}</p>
-            <p>{phone}</p>
-            <p>{email}</p>
+            <a class="p" target="_blank" href="tel:{phone}">{phone}</a>
+            <a class="p" target="_blank" href="mailto:{email}">{email}</a>
         </div>
 
         <div class="links-wrapper">
@@ -82,6 +82,10 @@
         gap: 1vh;
     }
 
+    .p {
+        color: var(--gray-color);
+        font-style: normal;
+    }
     @media only screen and (max-width: 765px) {
         .footer-wrapper {
             padding-inline: 5vw;

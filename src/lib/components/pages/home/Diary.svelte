@@ -37,7 +37,7 @@
         <div class="diary-wrapper">
             {#each diary as element }
             <a class="diary-item" href="/diary/{element.id}">
-                <img src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
+                <img width="500" height="500" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
                 <div>
                     <p class="date sofia-font">{getDate(new Date(element.attributes.publicationDate), locale)}</p>
                     <p class="title">{element.attributes.title}</p>

@@ -39,6 +39,56 @@ export function query(locale) {
               }
             }
           }
+
+          seo(locale: "${locale}") {
+            data {
+              attributes {
+                seoTitle
+                seoDescription
+                seoKeywords
+              }
+            }
+          }
+
+          cookiesGdpr(locale: "${locale}"){
+            data {
+              attributes {
+                cookieHeading
+                cookieDescription
+                cookieAcceptLabel
+                cookieRejectLabel
+                cookieCloseLabel
+                cookieNecessaryLabel
+                cookieNecessaryDescription
+                cookieTrackingLabel
+                cookieTrackingDescription
+                cookieAnalyticsLabel
+                cookieAnalyticsDescription
+              }
+            }
+          }
+
+          ageConsent(locale:"${locale}"){
+            data {
+              attributes {
+                heroHeading
+                heroSubheading
+                approveButton
+                denyButton
+                policyText
+                denyHeading
+                denySubheading
+                bgImage {
+                  data {
+                    attributes {
+                      formats
+                    }
+                  }
+                }
+              }
+            }
+          }
+
         }`
     }
     return query

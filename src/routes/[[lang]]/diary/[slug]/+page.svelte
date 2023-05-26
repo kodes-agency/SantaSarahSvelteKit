@@ -34,9 +34,9 @@
                 </div>
             </div>
             <div class="imgs">
-                <img src="{data.imgUrl+data.singleDiary.diary.data.attributes.image.data.attributes.formats.web.url}" alt="{data.singleDiary.diary.data.attributes.image.data.attributes.alternativeText}">
+                <img width="500" height="500" loading="lazy" src="{data.imgUrl+data.singleDiary.diary.data.attributes.image.data.attributes.formats.web.url}" alt="{data.singleDiary.diary.data.attributes.image.data.attributes.alternativeText}">
                     {#each data.singleDiary.diary.data.attributes.gallery.data as element }
-                        <img src="{data.imgUrl+element.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                        <img width="80" height="80" loading="lazy" src="{data.imgUrl+element.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
                     {/each}
             </div>
         
