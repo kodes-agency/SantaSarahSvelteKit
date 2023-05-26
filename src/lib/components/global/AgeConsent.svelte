@@ -72,7 +72,7 @@
 
 <style>
     .home-hero-section-wrapper {
-        height: 100vh;
+        height: 100dvh;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

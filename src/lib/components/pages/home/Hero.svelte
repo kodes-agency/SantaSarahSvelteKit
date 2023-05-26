@@ -35,7 +35,7 @@
 
 <style>
     .home-hero-section-wrapper {
-        height: 100vh;
+        height: 100svh;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
