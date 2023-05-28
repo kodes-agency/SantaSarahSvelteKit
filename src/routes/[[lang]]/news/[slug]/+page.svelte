@@ -174,8 +174,9 @@
     }
 
     .imgs img {
-        max-width: 50vw;
-        max-height: 70vh;
+        width: 50vw;
+        height: 70vh;
+        object-fit: contain;
     }
 
     .mobile {

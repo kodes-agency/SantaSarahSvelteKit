@@ -73,5 +73,6 @@ export const actions = {
   
     const json = await response.json()
 
+    return {success: true, message: json.message}
   }
 }

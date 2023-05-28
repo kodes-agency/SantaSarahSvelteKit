@@ -9,7 +9,7 @@
         {#each layout as element }
             {#if element.__typename == 'ComponentGlobalImage' }
                 <div class="{element.imageOrientation}">
-                    <img width="500" height="500" loading="lazy" src="{imgUrl+element.image.data.attributes.formats.web.url}" alt="{element.image.data.attributes.alternativeText}">
+                    <img width="500" loading="lazy" src="{imgUrl+element.image.data.attributes.formats.web.url}" alt="{element.image.data.attributes.alternativeText}">
                     <p>{element.description}</p>
                 </div>
             {/if}

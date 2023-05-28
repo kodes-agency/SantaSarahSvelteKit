@@ -36,7 +36,7 @@
             <div class="imgs">
                 <img width="500" height="500" loading="lazy" src="{data.imgUrl+data.singleDiary.diary.data.attributes.image.data.attributes.formats.web.url}" alt="{data.singleDiary.diary.data.attributes.image.data.attributes.alternativeText}">
                     {#each data.singleDiary.diary.data.attributes.gallery.data as element }
-                        <img width="80" height="80" loading="lazy" src="{data.imgUrl+element.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                        <img width="500" height="500" loading="lazy" src="{data.imgUrl+element.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
                     {/each}
             </div>
         
@@ -184,8 +184,9 @@
     }
 
     .imgs img {
-        max-width: 50vw;
-        max-height: 70vh;
+        width: 50vw;
+        height: 70vh;
+        object-fit: contain;
     }
 
     .mobile {

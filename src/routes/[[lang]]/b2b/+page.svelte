@@ -46,5 +46,5 @@
   imgUrl={data.imgUrl}
 ></Layout>
 <Form
-  form={data.form}
+  formData={data.form}
 ></Form>

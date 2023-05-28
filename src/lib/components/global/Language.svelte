@@ -1,15 +1,21 @@
 <script>
     import { onMount } from "svelte";
     import { page } from '$app/stores'
+    let buttons
 
-    
+
+    function setLanguage(lang) {
+        document.cookie = `lang=${lang}; path=/;`
+        console.log(document.getElementById('cookies'))
+        window.location.reload()
+    } 
 
 </script>
 
 <div class="section-wrapper">
-    <a class="sofia-font selected" href="/bg">бг</a>
-    <a class="sofia-font" href="/en">еn</a>
-    <a class="sofia-font" href="/de">de</a>
+    <button id="bg" on:click={()=>{setLanguage("bg")}} class="sofia-font lang-buttons">бг</button>
+    <button id="en" on:click={()=>{setLanguage("en")}} class="sofia-font lang-buttons">еn</button>
+    <button id="de" on:click={()=>{setLanguage("de")}} class="sofia-font lang-buttons">de</button>
 </div>
 
 <style>
@@ -22,7 +28,7 @@
         z-index: 100;
     }
 
-    a {
+    button {
         text-transform: uppercase;
         font-size: 23px;
         font-weight: lighter;
@@ -31,6 +37,7 @@
         margin: 0px;
         padding: 0px;
         color: var(--light-brown-color);
+        cursor: pointer;
     }
 
     .selected {

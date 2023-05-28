@@ -1,18 +1,21 @@
 <script>
+    import { onMount } from 'svelte'
+    import { fade } from 'svelte/transition'
+
     export let content
     export let imgUrl
-    import { onMount } from 'svelte'
+
+    let show = false
 
     let ageConsent
-
     $: ageConsent
 
-    
-
     onMount(() => {
+        const ageWrapper = document.querySelector('#age-consent-wrapper')
         ageConsent = localStorage.getItem('ageConsent')
         if (ageConsent == null || ageConsent == 0) {
             document.querySelector('.body').style.display = 'none'
+            ageWrapper.style.display = 'block'
         }
     })
 
@@ -20,15 +23,15 @@
         localStorage.setItem('ageConsent', value)
         ageConsent = value
         if(value == 1) {
+            show = false
             document.querySelector('.body').style.display = 'block'
         }
     }
     
-    
 </script>
 
 {#if ageConsent == 0 || ageConsent == null}
-    <section>
+    <section id="age-consent-wrapper" transition:fade>
         <div class="home-hero-section-wrapper" style="background-image: url({imgUrl+content.bgImage.data.attributes.formats.web.url});">
             <svg width="142" height="155" viewBox="0 0 142 155" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_219_171)">
@@ -71,6 +74,11 @@
 
 
 <style>
+
+    #age-consent-wrapper {
+        display: none;
+    }
+
     .home-hero-section-wrapper {
         height: 100dvh;
         background-size: cover;
