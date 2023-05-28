@@ -51,7 +51,8 @@
     }
 
     .year-wrapper {
-        padding-block: 10vh;
+        padding-top: 10vh;
+        padding-bottom: 10vh;
         display: flex;
         flex-direction: column;
         gap: 5vh;
@@ -98,7 +99,8 @@
     @media only screen and (max-width: 765px) {
         .year-wrapper {
             gap: 1vh;
-            padding-block: 2vh;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
         }
 
         section {

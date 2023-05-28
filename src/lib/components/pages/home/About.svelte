@@ -24,7 +24,8 @@
         align-items: center;
         justify-content: center;
         gap: 7vh;
-        padding-inline: 5vw;
+        padding-left : 5vw;
+        padding-right : 5vw;
     }
 
     img {

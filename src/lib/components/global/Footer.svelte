@@ -74,7 +74,8 @@
 
     .footer-wrapper {
         gap: 4vh;
-        padding-block: 2vh;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
         padding-bottom: 7vh;
     }
 
@@ -88,7 +89,8 @@
     }
     @media only screen and (max-width: 765px) {
         .footer-wrapper {
-            padding-inline: 5vw;
+            padding-left : 5vw;
+            padding-right : 5vw;
 
         }
 

@@ -59,7 +59,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: start;
-        padding-block: 30vh;
+        padding-top: 30vh;
+        padding-bottom: 30vh;
     }
 
     .line {
@@ -88,7 +89,8 @@
         text-align: center;
         font-size: 35px;
         color: var(--gray-color);
-        padding-block: 5vh;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
     }
 
     .diary-content {
@@ -130,7 +132,8 @@
         font-size: 25px;
         font-style: italic;
         text-transform: lowercase;
-        padding-block: 5vh;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
     }
 
     .column-content {
@@ -185,7 +188,8 @@
 
     @media only screen and (max-width: 765px) {
         .section-wrapper {
-            padding-block: 15vh;
+            padding-top: 15vh;
+            padding-bottom: 15vh;
         }
 
         h1 {
@@ -194,7 +198,8 @@
 
         article > h2 {
             font-size: 25px;
-            padding-block: 2vh;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
         }
 
         article {
@@ -209,7 +214,8 @@
         }
 
         .date {
-            padding-block: 2vh;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
         }
 
         .left-column {
@@ -243,7 +249,8 @@
         }
 
         img {
-            padding-block: 0vh;
+            padding-top: 0vh;
+            padding-bottom: 0vh;
         }
 
     }

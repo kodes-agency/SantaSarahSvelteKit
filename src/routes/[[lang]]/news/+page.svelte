@@ -69,7 +69,8 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        padding-inline: 7vw;
+        padding-left : 7vw;
+        padding-right : 7vw;
         gap: 5vw;
         width: 100%;
     }
@@ -100,7 +101,8 @@
             justify-content: center;
             align-items: center;
             gap: 10vh;
-            padding-inline: 0;
+            padding-left : 0px;
+            padding-right : 0px;
         }
 
         .right-column {

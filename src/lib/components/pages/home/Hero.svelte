@@ -35,6 +35,7 @@
 
 <style>
     .home-hero-section-wrapper {
+        min-height: 70vh;
         height: 100svh;
         background-size: cover;
         background-position: center;
@@ -57,7 +58,8 @@
         font-style: italic;
         font-size: 40px;
         max-width: 750px;
-        padding-inline: 5vw;
+        padding-left : 5vw;
+        padding-right : 5vw;
     }
 
     p {

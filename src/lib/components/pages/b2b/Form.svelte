@@ -244,7 +244,8 @@
 
     button {
         background-color: transparent;
-        padding-inline: 80px;
+        padding-left : 80px;
+        padding-right : 80px;
         margin-top: 5vh;
     }
 
@@ -260,6 +261,7 @@
         position: fixed;
         top: 0px;
         width: 100%;
+        min-height: 70vh;
         height: 100svh;
         background-color: var(--bg-color);
         display: flex;

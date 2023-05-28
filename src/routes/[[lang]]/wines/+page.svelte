@@ -285,12 +285,14 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 30vw;
-        padding-inline: 3vw;
+        padding-left : 3vw;
+        padding-right : 3vw;
     }
 
     .wine-item-wrapper {
         max-width: 350px;
-        padding-block: 5vh;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
         display: flex;
         flex-direction: column;
         gap: 1.5vh;
@@ -326,7 +328,8 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 4vh;
-        padding-inline: 5vw;
+        padding-left : 5vw;
+        padding-right : 5vw;
     }
 
     .category-wrapper {
@@ -418,7 +421,8 @@
         }
 
         .wine-item-wrapper {
-            padding-block: 0vh;
+            padding-top: 0vh;
+            padding-bottom: 0vh;
             gap: 1vh;
         }
 

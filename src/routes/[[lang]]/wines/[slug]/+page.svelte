@@ -145,8 +145,10 @@
         justify-content: center;
         align-items: center;
         gap: 10vh;
-        padding-inline: 10vw;
-        padding-block: 20vh;
+        padding-left : 10vw;
+        padding-right : 10vw;
+        padding-top: 20vh;
+        padding-bottom: 20vh;
     }
 
     .main-section {
@@ -314,8 +316,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding-inline: 10vw;
-        padding-block: 5vh;
+        padding-left : 10vw;
+        padding-right : 10vw;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
         gap: 10vh;
     }
 
@@ -340,8 +344,10 @@
 
     @media only screen and (max-width: 900px) {
         .section-wrapper {
-            padding-inline: 5vw;
-            padding-block: 15vh;
+            padding-left : 5vw;
+            padding-right : 5vw;
+            padding-top: 15vh;
+            padding-bottom: 15vh;
         }
 
         .line-heading {
@@ -367,8 +373,10 @@
         }
 
         .information-wrapper {
-            padding-inline: 5vw;
-            padding-block: 0vh;
+            padding-left : 5vw;
+            padding-right : 5vw;
+            padding-top: 0vh;
+            padding-bottom: 0vh;
             gap: 6vh;
         }
 

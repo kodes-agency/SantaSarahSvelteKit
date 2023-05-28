@@ -14,7 +14,10 @@
                 </div>
             {/if}
             {#if element.__typename == 'ComponentGlobalTitleNText' }
-                <div class="title-text-wrapper" id={element.marker}>
+            <div class="title-text-wrapper" id={element.marker}>
+                {#if element.marker }
+                    <div class="space"></div>
+                {/if}
                     <div class="upper-heading-wrapper">
                         <h2 class="sofia-font">{element.minorHeading}</h2>
                         <div class="line"></div>
@@ -47,8 +50,10 @@
         justify-content: center;
         align-items: center;
         gap: 30vh;
-        padding-inline: 15vw;
-        padding-block: 30vh;
+        padding-left : 15vw;
+        padding-right : 15vw;
+        padding-top : 30vh;
+        padding-bottom : 30vh;
     }
 
     p {
@@ -155,7 +160,8 @@
     }
 
     :global(.text-editor-content p) {
-        padding-block: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     /* Paragraph style */
@@ -165,11 +171,19 @@
         font-style: italic;
     }
 
+    /* OTHERs */
+
+    .space {
+        height: 10vh;
+    }
+
     @media only screen and (max-width: 765px) {
         .section-wrapper {
-            padding-inline: 5vw;
+            padding-left : 5vw;
+            padding-right : 5vw;
             gap: 8vh;
-            padding-block: 15vh;
+            padding-top : 15vh;
+            padding-bottom : 15vh;
         }
 
         .horizontal > img {

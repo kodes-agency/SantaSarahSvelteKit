@@ -106,7 +106,8 @@
         }
 
         .section-wrapper {
-            padding-inline: 4vw;
+            padding-left : 5vw;
+            padding-right : 5vw;
         }
 
         .diary-wrapper {

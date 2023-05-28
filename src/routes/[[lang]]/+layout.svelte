@@ -87,8 +87,10 @@
         background-color: transparent;
         text-transform: uppercase;
         font-size: 15px;
-        padding-block: 6px;
-        padding-inline: 20px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left : 20px;
+        padding-right : 20px;
         border-radius: 3px;
         transition: all 0.3s ease-in-out;
         font-family: 'Sofia Sans', sans-serif;

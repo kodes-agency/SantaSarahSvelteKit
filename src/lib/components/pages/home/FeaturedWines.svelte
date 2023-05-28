@@ -84,7 +84,8 @@
         justify-content: start;
         align-items: center;
         padding-top: 25px;
-        padding-inline: 1vw;
+        padding-left : 1vw;
+        padding-right : 1vw;
         gap: 1.5vh;
         height: 450px;
         border-bottom: 1px solid var(--light-border-color);

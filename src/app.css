@@ -62,8 +62,10 @@ img {
     border: 1px solid var(--light-brown-color);
     text-transform: uppercase;
     font-size: 15px;
-    padding-block: 6px;
-    padding-inline: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left : 20px;
+    padding-right : 20px;
     border-radius: 3px;
     transition: all 0.3s ease-in-out;
 }
@@ -73,7 +75,8 @@ img {
 }
 
 .inline-padding {
-    padding-inline: 3vw;
+    padding-left : 3vw;
+    padding-right : 3vw;
 }
 
 .basic-button:hover {

@@ -135,8 +135,8 @@
                 <p>{contact.addressLine1} </p>
                 <p>{contact.addressLine2}</p>
                 <p>{contact.addressLine3}</p>
-                <p>{contact.phoneNumber}</p>
-                <p>{contact.email}</p>
+                <a href={"tel:"+contact.phoneNumber}>{contact.phoneNumber}</a>
+                <a href={"mailto:"+contact.email}>{contact.email}</a>
             </div>
             <div class="law-links">
                 <a on:click={clickHandle} href="/gdpr">{menuData.linkGDPR}</a>
@@ -188,12 +188,16 @@
         min-width: 20vw;
     }
 
-    .links-wrapper{
+    .links-wrapper, .contact-wrapper{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 1vh;
+    }
+
+    .contact-wrapper {
+        gap: 0vh
     }
 
     a,p {
@@ -217,7 +221,8 @@
         display: flex;
         flex-direction: row;
         gap: 5vh;
-        padding-inline: 5vw;
+        padding-left : 5vw;
+        padding-right : 5vw;
     }
 
     .contact-container-wrapper p, .contact-container-wrapper a {

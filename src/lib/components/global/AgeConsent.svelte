@@ -104,19 +104,22 @@
         font-style: italic;
         font-size: 40px;
         max-width: 750px;
-        padding-inline: 5vw;
+        padding-left : 5vw;
+        padding-right : 5vw;
     }
 
     .p {
         text-transform: uppercase;
-        padding-inline: 5vw;
+        padding-left : 5vw;
+        padding-right : 5vw;
     }
 
     :global(.policy-text p) {
         color: var(--bg-color);
         text-align: center;
         font-size: 14px;
-        padding-inline: 5vw;
+        padding-left : 5vw;
+        padding-right : 5vw;
         font-family: 'Sofia Pro', sans-serif;
     }
 

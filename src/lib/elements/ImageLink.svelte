@@ -55,8 +55,10 @@
         text-transform: uppercase;
         border: 1px solid var(--white-color);
         border-radius: 3px;
-        padding-block: 5px;
-        padding-inline: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left : 20px;
+        padding-right : 20px;
     }
 
     @media only screen and (max-width: 765px) {
