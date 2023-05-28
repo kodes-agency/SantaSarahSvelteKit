@@ -222,12 +222,11 @@
         }
 
         .imgs {
-            padding-top: 0;
+            padding-top: 10vh;
         }
 
         .imgs img {
-            max-width: 100%;
-            max-height: 100%;
+            height: 40vh;
         }
 
         .desktop {
@@ -244,7 +243,7 @@
         }
 
         img {
-            padding-block: 5vh;
+            padding-block: 0vh;
         }
 
     }
