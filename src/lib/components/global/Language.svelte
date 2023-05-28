@@ -6,7 +6,6 @@
 
     function setLanguage(lang) {
         document.cookie = `lang=${lang}; path=/;`
-        console.log(document.getElementById('cookies'))
         window.location.reload()
     } 
 

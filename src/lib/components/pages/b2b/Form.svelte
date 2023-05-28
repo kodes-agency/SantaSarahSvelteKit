@@ -1,8 +1,7 @@
 <script>
     import {page} from "$app/stores"
-  import { onMount } from "svelte";
+    import { onMount } from "svelte";
     export let formData
-    console.log(formData)
 
     let modal
 
