@@ -215,7 +215,6 @@
         border: 1px solid var(--dark-brown-color);
         background-color: transparent;
         height: 40px;
-
         font-size: 16px;
         text-align: center;
         color: var(--gray-color);
@@ -226,15 +225,15 @@
         border-radius: 3px;
         border: 1px solid var(--dark-brown-color);
         background-color: transparent;
-        height: 30px;
+        /* height: 30px; */
         font-size: 16px;
         text-align: center;
         color: var(--gray-color);
     }
     
     input[type="checkbox"]{
-        width: 30px;
-        height: 20px;
+        /* width: 30px; */
+        /* height: 20px; */
     }
 
     label {
