@@ -89,6 +89,8 @@
 
     h1 {
         text-transform: uppercase;
+        padding-left: 3vw;
+        padding-right: 3vw;
     }
 
     article {
