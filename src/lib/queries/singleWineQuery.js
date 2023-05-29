@@ -6,6 +6,7 @@ export function query(locale, id) {
               attributes {
                 name
                 longDescription
+                harvestYear
                 image {
                   data {
                     attributes {

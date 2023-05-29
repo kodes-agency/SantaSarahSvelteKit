@@ -19,7 +19,7 @@
                     {wineData.name}
                 </h1>
                 <p class="year sofia-font">
-                    {new Date(wineData.wineDetails.year).getFullYear()}
+                    {new Date(wineData.harvestYear).getFullYear()}
                 </p>
                 {#if wineData.image?.data?.attributes }
                     <img height="600px" loading="lazy" src="{data.imgUrl+wineData.image?.data?.attributes.formats.web.url}" alt="{wineData.image?.data?.attributes.alternativeText}">

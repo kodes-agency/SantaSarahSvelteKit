@@ -25,6 +25,7 @@ export function query(locale) {
                   }
                 }
                 name
+                harvestYear
                 shortDescription
                 image {
                   data {
