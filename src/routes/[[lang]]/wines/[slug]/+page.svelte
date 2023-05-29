@@ -21,7 +21,9 @@
                 <p class="year sofia-font">
                     {new Date(wineData.wineDetails.year).getFullYear()}
                 </p>
-                <img height="600px" loading="lazy" src="{data.imgUrl+wineData.image?.data?.attributes.formats.web.url}" alt="{wineData.image?.data?.attributes.alternativeText}">
+                {#if wineData.image?.data?.attributes }
+                    <img height="600px" loading="lazy" src="{data.imgUrl+wineData.image?.data?.attributes.formats.web.url}" alt="{wineData.image?.data?.attributes.alternativeText}">
+                {/if}
                 <p class="description">
                     {wineData.longDescription}
                 </p>
@@ -85,7 +87,7 @@
             </div>
             <div class="t-d-item">
                 <p class="t-d-name sofia-font">{pageData.temperature}</p>
-                <p class="t-d-content">{wineData.wineDetails.temperatureC} oC / {wineData.wineDetails.temperatureF} oF</p>
+                <p class="t-d-content">{wineData.wineDetails.temperatureC} °C / {wineData.wineDetails.temperatureF} °F</p>
             </div>
         </div>
 
@@ -130,7 +132,9 @@
                 <p>{wineData.wineInformation.food}</p>
             </div>
         </div>
-        <a class="basic-button" href="{data.imgUrl+wineData.winePasspordPDF.data.attributes.url}" download target="_blank">{pageData.buttonText}</a>
+        {#if wineData.winePasspordPDF?.data?.attributes }  
+            <a class="basic-button" href="{data.imgUrl+wineData.winePasspordPDF.data.attributes.url}" download target="_blank">{pageData.buttonText}</a>
+        {/if}
 
     </div>
 </section>

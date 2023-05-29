@@ -18,13 +18,14 @@
             </clipPath>
             </defs> 
         </svg>
-            
-        <h1>
-            {title}
-        </h1>
-        <p class="sofia-font">
-            {subTitle}
-        </p>
+        <div class="headings-wrapper">
+            <h1>
+                {title}
+            </h1>
+            <p class="sofia-font">
+                {subTitle}
+            </p>
+        </div>
         <svg id="icon" width="49" height="25" viewBox="0 0 49 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="23.4062" y="23.8638" width="33.7483" height="1.60706" transform="rotate(-45 23.4062 23.8638)" fill="#F5F3E4"/>
             <rect width="33.7483" height="1.60706" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 25.8203 23.8638)" fill="#F5F3E4"/>
@@ -51,10 +52,10 @@
 
     h1, p {
         color: var(--white-color);
-        text-align: center;
     }
 
     h1 {
+        text-align: center;
         font-style: italic;
         font-size: 40px;
         max-width: 750px;
@@ -63,7 +64,10 @@
     }
 
     p {
-        text-transform: uppercase;
+        text-align: right;
+        padding-right: 75px;
+        font-size: 16px;
+        padding-top: 5vh;
     }
 
     #icon {
@@ -78,7 +82,8 @@
             font-size: 30px;
         }
         p {
-            font-size: 18px;
+            font-size: 16px;
+            padding-right: 7vw;
         }
     }
 </style>

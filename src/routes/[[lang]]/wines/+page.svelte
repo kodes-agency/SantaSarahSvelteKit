@@ -223,14 +223,18 @@
             <div class="wine-img-absolute-wrapper">
                 <div class="wine-img-wrapper">
                     {#each wineList as element }
-                        <img height="300px" loading="lazy" class="wine-img" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
+                        {#if element.attributes.image?.data?.attributes }
+                            <img height="300px" loading="lazy" class="wine-img" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
+                        {/if}
                     {/each}
                 </div>
             </div>
             {#each wineList as element }
                 <a href="/wines/{element.id}">
                     <div class="wine-item-wrapper" id={element.id}>
-                        <img height="300px" loading="lazy" class="wine-img-mobile" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                        {#if element.attributes.image?.data?.attributes}
+                            <img height="300px" loading="lazy" class="wine-img-mobile" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                        {/if}
                         <h5>{element.attributes.name}</h5>
                         <p class="year">{new Date(element.attributes.wineDetails.year).getFullYear()}</p>
                         <p class="description">{element.attributes.shortDescription}</p>
