@@ -47,7 +47,7 @@
                             scrollTrigger: {
                                 trigger: wine,
                                 start: 'top 35%',
-                                end: 'bottom 30%',
+                                end: 'bottom 20%',
                                 toggleActions: 'play reset play reset'
                             },
                             opacity: 0.2,
@@ -65,7 +65,6 @@
     $: { 
         if($filter == 'all'){
                 wineList = data.wines.vinas.data
-    
         } else {
             wineList = data.wines.vinas.data.filter((wine)=>{
                 return wine.attributes.wineType.data.attributes.filterName == $filter
@@ -224,7 +223,7 @@
                 <div class="wine-img-wrapper">
                     {#each wineList as element }
                         {#if element.attributes.image?.data?.attributes }
-                            <img height="300px" loading="lazy" class="wine-img" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
+                            <img height="300px" class="wine-img" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
                         {/if}
                     {/each}
                 </div>
@@ -233,7 +232,7 @@
                 <a href="/wines/{element.id}">
                     <div class="wine-item-wrapper" id={element.id}>
                         {#if element.attributes.image?.data?.attributes}
-                            <img height="300px" loading="lazy" class="wine-img-mobile" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                            <img height="300px" class="wine-img-mobile" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
                         {/if}
                         <h5>{element.attributes.name}</h5>
                         <p class="year">{new Date(element.attributes.harvestYear).getFullYear()}</p>
