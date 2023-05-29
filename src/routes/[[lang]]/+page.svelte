@@ -61,7 +61,7 @@
     onMount(()=>{
         $logoColor = "none"
         $iconColor = "white"
-        heroHeight = document.querySelector('.home-hero-section-wrapper').offsetHeight
+        heroHeight = document.querySelector('.home-hero-section').offsetHeight
 
         document.addEventListener('scroll', scrollHandler)
 
@@ -75,12 +75,14 @@
 </script>
 
 <Container>
-    <Hero
-        title={data.home?.heroHeading}
-        subTitle={data.home?.heroSubheading}
-        bgImg={data.home?.heroImage?.data.attributes.formats.web.url}
-        imgUrl={data.imgUrl}
-    ></Hero>
+    <div class="home-hero-section">
+        <Hero
+            title={data.home?.heroHeading}
+            subTitle={data.home?.heroSubheading}
+            bgImg={data.home?.heroImage?.data.attributes.formats.web.url}
+            imgUrl={data.imgUrl}
+        ></Hero>
+    </div>
     <About
         img={data.home?.aboutImage?.data.attributes.formats.web.url}
         imgUrl={data.imgUrl}
