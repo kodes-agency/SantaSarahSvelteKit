@@ -17,12 +17,9 @@
     let imgWrapper
     let filterHeading
     let filterStatus = false
-    const ctx = gsap.context({})
 
-    function filterHandler(){
-        ctx.revert()
+    function filterHandler (){
         setTimeout(()=>{
-            ctx.add(()=>{
                 mm.add("(min-width: 769px)", ()=>{
                     imgs = document.querySelectorAll('.wine-img')  
                     wines = document.querySelectorAll('.wine-item-wrapper')
@@ -42,22 +39,22 @@
                     })
                 })
                 mm.add("(max-width: 768px)", ()=>{
-                    document.querySelectorAll('.wine-item-wrapper').forEach((wine)=>{
-                        gsap.from(wine, {
+                    const wines = document.querySelectorAll('.wine-item-wrapper')
+                    wines.forEach((wine)=>{
+                        gsap.to(wine, {
                             scrollTrigger: {
                                 trigger: wine,
                                 start: 'top 35%',
                                 end: 'bottom 20%',
                                 toggleActions: 'play reset play reset'
-                            },
-                            opacity: 0.2,
+                            }, 
+                            opacity: 1,
                             duration: 0.01,
                             ease: 'none'
                         })
                     })
                 })
-            })
-        }, 500)
+        }, 1000)
         
     }
 
@@ -83,7 +80,6 @@
                 return wine.attributes.wineType.data.attributes.filterName == $filter
             })
         }
-
         filterHandler()
     }
 
@@ -164,6 +160,7 @@
     }
 
     onMount(()=>{
+        filterHandler()
         let links = document.querySelectorAll('.menu-link')
         if($page.url.pathname == '/wines'){
             links.forEach((link)=>{
@@ -172,11 +169,6 @@
                 })
             })
         }
-
-        filterHandler()
-        return(()=>{
-            ctx.revert()
-        })
     })
 </script>
 
@@ -427,6 +419,7 @@
             padding-top: 0vh;
             padding-bottom: 0vh;
             gap: 1vh;
+            opacity: 0.2;
         }
 
         .wines-wrapper {
