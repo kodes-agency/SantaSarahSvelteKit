@@ -57,8 +57,8 @@
 
 <style>
     .section-wrapper {
-        padding-left : 5vw;
-        padding-right : 5vw;
+        padding-left : 10vw;
+        padding-right : 10vw;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -74,7 +74,7 @@
         display: flex;
         flex-direction: row;
         align-items: start;
-        justify-content: space-around;
+        justify-content: space-evenly;
         gap: 4vw;
         width: 100%;
     }
