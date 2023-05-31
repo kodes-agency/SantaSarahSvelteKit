@@ -9,7 +9,7 @@
         {#each layout as element }
             {#if element.__typename == 'ComponentGlobalImage' }
                 <div class="{element.imageOrientation}">
-                    <img width="500" loading="lazy" src="{imgUrl+element.image.data.attributes.formats.web.url}" alt="{element.description}">
+                    <img class="img-img" width="500" loading="lazy" src="{imgUrl+element.image.data.attributes.formats.web.url}" alt="{element.description}">
                     <p>{element.description}</p>
                 </div>
             {/if}
@@ -67,7 +67,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
         gap: 1vh;
     }
 

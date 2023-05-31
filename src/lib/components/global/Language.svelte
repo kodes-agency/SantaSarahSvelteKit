@@ -5,28 +5,31 @@
     let buttons
     let section
 
+    $: $page
 
     function setLanguage(lang) {
         document.cookie = `lang=${lang}; path=/;`
         window.location.reload()
     } 
 
-    onMount(() => {
-        buttons = document.querySelectorAll('.lang-buttons')
-        buttons.forEach(button => {
-            button.style.fontWeight = "lighter"
-            if(button.id == locale){
-                button.style.fontWeight = "bold"
-            }
-        })
-    })
+    // onMount(() => {
+    //     buttons = document.querySelectorAll('.lang-buttons')
+    //     buttons.forEach(button => {
+    //         button.style.fontWeight = "lighter"
+    //         if(button.id == locale){
+    //             button.style.fontWeight = "bold"
+    //         }
+    //     })
+    // })
 </script>
 
-    <div class="section-wrapper" bind:this={section}>
-        <button id="bg" on:click={()=>{setLanguage("bg")}} class="sofia-font lang-buttons">бг</button>
-        <button id="en" on:click={()=>{setLanguage("en")}} class="sofia-font lang-buttons">еn</button>
-        <button id="de" on:click={()=>{setLanguage("de")}} class="sofia-font lang-buttons">de</button>
-    </div>
+    {#if $page.route.id != "/[[lang]]/wines/[slug]" }
+        <div class="section-wrapper" bind:this={section}>
+            <button class='sofia-font lang-buttons {locale == "bg" ? "bold" : ""}' id="bg" on:click={()=>{setLanguage("bg")}}>бг</button>
+            <button class='sofia-font lang-buttons {locale == "en" ? "bold" : ""}' id="en" on:click={()=>{setLanguage("en")}}>еn</button>
+            <button class='sofia-font lang-buttons {locale == "de" ? "bold" : ""}' id="de" on:click={()=>{setLanguage("de")}}>de</button>
+        </div>
+    {/if}
 
 <style>
     .section-wrapper {
@@ -36,6 +39,10 @@
         display: flex;
         flex-direction: column;
         z-index: 100;
+    }
+
+    .bold {
+        font-weight: bold;
     }
 
     button {
