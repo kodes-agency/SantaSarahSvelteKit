@@ -6,32 +6,37 @@ const localeBg = "bg"
 const localeEn = "en"
 const localeDe = "de"
 
+let local 
+
+function locale(event, lang){
+    if(lang === localeBg || event.params.lang === localeBg){
+        return local = localeBg
+    }
+    if(lang === localeEn || event.params.lang === localeEn){
+        return local = localeEn
+    }
+    if(lang === localeDe || event.params.lang === localeDe){
+        return local = localeDe
+    }
+
+    if(geo == "Sofia") {
+        local = localeBg
+    } else if(geo == "Berlin") {
+        local = localeDe
+    } else {
+        local = localeEn
+    }
+}
 
 const geo = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1]
 
 
 export async function handle({ event, resolve }) {
     const lang = event.cookies.get('lang')
-    event.locals.locale = localeBg
-    if(geo == "Sofia") {
-        event.locals.locale = localeBg
-    } else if(geo == "Berlin") {
-        event.locals.locale = localeDe
-    } else {
-        event.locals.locale = localeEn
-    }
 
+    locale(event, lang)
 
-    if(lang === localeBg || event.params.lang === localeBg){
-        event.locals.locale = localeBg
-    }
-    if(lang === localeEn || event.params.lang === localeEn){
-        event.locals.locale = localeEn
-    }
-    if(lang === localeDe || event.params.lang === localeDe){
-        event.locals.locale = localeDe
-    }
-
+    event.locals.locale = local
     event.locals.apiUri = graphUri
     event.locals.imgUrl = imageUri
     return await resolve(event)
