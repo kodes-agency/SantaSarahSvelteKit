@@ -1,7 +1,10 @@
 <script>
     import { onMount } from "svelte";
+    import { page } from "$app/stores";
     export let locale
     let buttons
+    let section
+
 
     function setLanguage(lang) {
         document.cookie = `lang=${lang}; path=/;`
@@ -19,7 +22,7 @@
     })
 </script>
 
-    <div class="section-wrapper">
+    <div class="section-wrapper" bind:this={section}>
         <button id="bg" on:click={()=>{setLanguage("bg")}} class="sofia-font lang-buttons">бг</button>
         <button id="en" on:click={()=>{setLanguage("en")}} class="sofia-font lang-buttons">еn</button>
         <button id="de" on:click={()=>{setLanguage("de")}} class="sofia-font lang-buttons">de</button>

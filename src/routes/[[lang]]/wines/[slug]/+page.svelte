@@ -1,9 +1,6 @@
 <script>
     import { getDate } from '$lib/functions/monthYear'
     export let data
-    $: pageData = data.singleWine.singleWinePage.data.attributes
-    $: wineData = data.singleWine.vina.data.attributes
-
 
 
 </script>
@@ -12,20 +9,20 @@
     <div class="section-wrapper">
         <!-- Main section -->
         <div class="main-section">
-            <p class="upper-heading sofia-font">{pageData.heroHeading}</p>
+            <p class="upper-heading sofia-font">{data.singleWine.singleWinePage.data.attributes.heroHeading}</p>
             <div class="line-heading"></div>
             <div class="wine-meta">
                 <h1>
-                    {wineData.name}
+                    {data.singleWine.vina.data.attributes.name}
                 </h1>
                 <p class="year sofia-font">
-                    {new Date(wineData.harvestYear).getFullYear()}
+                    {new Date(data.singleWine.vina.data.attributes.harvestYear).getFullYear()}
                 </p>
-                {#if wineData.image?.data?.attributes }
-                    <img height="600px" loading="lazy" src="{data.imgUrl+wineData.image?.data?.attributes.formats.web.url}" alt="{wineData.image?.data?.attributes.alternativeText}">
+                {#if data.singleWine.vina.data.attributes.image?.data?.attributes }
+                    <img height="600px" loading="lazy" src="{data.imgUrl+data.singleWine.vina.data.attributes.image?.data?.attributes.formats.web.url}" alt="{data.singleWine.vina.data.attributes.name}">
                 {/if}
                 <p class="description">
-                    {wineData.longDescription}
+                    {data.singleWine.vina.data.attributes.longDescription}
                 </p>
             </div>
         </div>
@@ -33,48 +30,48 @@
         <!-- Technical information section -->
         <div class="t-d-section">
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.alchohol}</p>
-                <p class="t-d-content">{wineData.wineDetails.alchohol}</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.alchohol}</p>
+                <p class="t-d-content">{data.singleWine.vina.data.attributes.wineDetails.alchohol}</p>
             </div>
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.acid}</p>
-                <p class="t-d-content">{wineData.wineDetails.acids}</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.acid}</p>
+                <p class="t-d-content">{data.singleWine.vina.data.attributes.wineDetails.acids}</p>
             </div>
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.sugars}</p>
-                <p class="t-d-content">{wineData.wineDetails.sugars}</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.sugars}</p>
+                <p class="t-d-content">{data.singleWine.vina.data.attributes.wineDetails.sugars}</p>
             </div>
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.volume}</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.volume}</p>
 
                 <div class="row">
-                    {#each wineData.wineDetails.volumeNCount as element, id }
+                    {#each data.singleWine.vina.data.attributes.wineDetails.volumeNCount as element, id }
                         <p class="t-d-content">
                             {#if id > 0 }
                                 <span>&#160/</span>
                             {/if}
-                            {element.volume} {pageData.unit}
+                            {element.volume} {data.singleWine.singleWinePage.data.attributes.unit}
                         </p>
                     {/each}
                 </div>
             </div>
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.closing}</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.closing}</p>
                 <p class="t-d-content">
-                    {#each wineData.wineDetails.closing.data as element }
+                    {#each data.singleWine.vina.data.attributes.wineDetails.closing.data as element }
                         <p>{element.attributes.capType}</p>
                     {/each}
                 </p>
             </div>
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.year}</p>
-                <p class="t-d-content t-d-year">{getDate(new Date(wineData.wineDetails.year), data.locale)}</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.year}</p>
+                <p class="t-d-content t-d-year">{getDate(new Date(data.singleWine.vina.data.attributes.wineDetails.year), data.locale)}</p>
             </div>
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.bottlesProduced}</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.bottlesProduced}</p>
 
                 <div class="row">
-                    {#each wineData.wineDetails.volumeNCount as element, id }
+                    {#each data.singleWine.vina.data.attributes.wineDetails.volumeNCount as element, id }
                         <p class="t-d-content">
                             {#if id > 0 }
                                 <span>&#160/</span>
@@ -86,23 +83,23 @@
                 
             </div>
             <div class="t-d-item">
-                <p class="t-d-name sofia-font">{pageData.temperature}</p>
-                <p class="t-d-content">{wineData.wineDetails.temperatureC} °C / {wineData.wineDetails.temperatureF} °F</p>
+                <p class="t-d-name sofia-font">{data.singleWine.singleWinePage.data.attributes.temperature}</p>
+                <p class="t-d-content">{data.singleWine.vina.data.attributes.wineDetails.temperatureC} °C / {data.singleWine.vina.data.attributes.wineDetails.temperatureF} °F</p>
             </div>
         </div>
 
         <!-- Awards section -->
-        {#if wineData.wineAwards[0]}            
+        {#if data.singleWine.vina.data.attributes.wineAwards[0]}            
             <div class="awards-section">
                 <div class="awards-heading-wrapper">
                     <div class="awards-line"></div>
                     <h3>
-                        {pageData.rewardsHeading}
+                        {data.singleWine.singleWinePage.data.attributes.rewardsHeading}
                     </h3>
                     <div class="awards-line"></div>
                 </div>
                 <div class="awards-wrapper">
-                    {#each wineData.wineAwards as element }
+                    {#each data.singleWine.vina.data.attributes.wineAwards as element }
                         <div class="award-item">
                             <p class="award-year">{element.year}</p>
                             <p class="award-description">{element.awardDescription}</p>
@@ -116,24 +113,24 @@
         <!-- Wine information section -->
         <div class="information-wrapper">
             <div class="information-item-wrapper">
-                <h3>{pageData.vinification}</h3>
-                <p>{wineData.wineInformation.vinification}</p>
+                <h3>{data.singleWine.singleWinePage.data.attributes.vinification}</h3>
+                <p>{data.singleWine.vina.data.attributes.wineInformation.vinification}</p>
             </div>
             <div class="information-item-wrapper">
-                <h3>{pageData.maturation}</h3>
-                <p>{wineData.wineInformation.maturation}</p>
+                <h3>{data.singleWine.singleWinePage.data.attributes.maturation}</h3>
+                <p>{data.singleWine.vina.data.attributes.wineInformation.maturation}</p>
             </div>
             <div class="information-item-wrapper">
-                <h3>{pageData.degustaion}</h3>
-                <p>{wineData.wineInformation.degustaion}</p>
+                <h3>{data.singleWine.singleWinePage.data.attributes.degustaion}</h3>
+                <p>{data.singleWine.vina.data.attributes.wineInformation.degustaion}</p>
             </div>
             <div class="information-item-wrapper">
-                <h3>{pageData.food}</h3>
-                <p>{wineData.wineInformation.food}</p>
+                <h3>{data.singleWine.singleWinePage.data.attributes.food}</h3>
+                <p>{data.singleWine.vina.data.attributes.wineInformation.food}</p>
             </div>
         </div>
-        {#if wineData.winePasspordPDF?.data?.attributes }  
-            <a class="basic-button" href="{data.imgUrl+wineData.winePasspordPDF.data.attributes.url}" download target="_blank">{pageData.buttonText}</a>
+        {#if data.singleWine.vina.data.attributes.winePasspordPDF?.data?.attributes }  
+            <a class="basic-button" href="{data.imgUrl+data.singleWine.vina.data.attributes.winePasspordPDF.data.attributes.url}" download target="_blank">{data.singleWine.singleWinePage.data.attributes.buttonText}</a>
         {/if}
 
     </div>

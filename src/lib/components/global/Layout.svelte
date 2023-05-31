@@ -9,7 +9,7 @@
         {#each layout as element }
             {#if element.__typename == 'ComponentGlobalImage' }
                 <div class="{element.imageOrientation}">
-                    <img width="500" loading="lazy" src="{imgUrl+element.image.data.attributes.formats.web.url}" alt="{element.image.data.attributes.alternativeText}">
+                    <img width="500" loading="lazy" src="{imgUrl+element.image.data.attributes.formats.web.url}" alt="{element.description}">
                     <p>{element.description}</p>
                 </div>
             {/if}
@@ -36,7 +36,7 @@
             {/if}
             {#if element.__typename == 'ComponentGlobalParagraph' }
                 <div class="paragraph-wrapper">
-                    <p class="paragraph-content">{element.text}</p>
+                    <p class="paragraph-content">{@html element.text}</p>
                 </div>
             {/if}
         {/each}

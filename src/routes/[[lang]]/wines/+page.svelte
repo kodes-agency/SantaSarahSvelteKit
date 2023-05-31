@@ -215,7 +215,7 @@
                 <div class="wine-img-wrapper">
                     {#each wineList as element }
                         {#if element.attributes.image?.data?.attributes }
-                            <img height="300px" class="wine-img" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.image?.data?.attributes.alternativeText}">
+                            <img height="300px" class="wine-img" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.name}">
                         {/if}
                     {/each}
                 </div>
@@ -224,7 +224,7 @@
                 <a href="/wines/{element.id}">
                     <div class="wine-item-wrapper" id={element.id}>
                         {#if element.attributes.image?.data?.attributes}
-                            <img height="300px" class="wine-img-mobile" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.alternativeText}">
+                            <img height="300px" class="wine-img-mobile" id="{element.id}" src="{data.imgUrl+element.attributes.image?.data?.attributes.formats.web.url}" alt="{element.attributes.name}">
                         {/if}
                         <h5>{element.attributes.name}</h5>
                         <p class="year">{new Date(element.attributes.harvestYear).getFullYear()}</p>

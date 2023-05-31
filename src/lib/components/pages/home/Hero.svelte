@@ -64,8 +64,7 @@
     }
 
     p {
-        text-align: right;
-        padding-right: 75px;
+        text-align: center;
         font-size: 16px;
         padding-top: 5vh;
     }

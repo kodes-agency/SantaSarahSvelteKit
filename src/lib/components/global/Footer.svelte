@@ -1,22 +1,7 @@
 <script>
-    export let address = "Горица 8225, ул.Ивайло 2"
-    export let state = "района на Поморие, Бургас, България"
-    export let phone = "+359 888 9080 64"
-    export let email = "genowski@santa-sarah.com"
-    export let links = [
-        {
-            title: "Защита на личните данни",
-            link: "/gdpr"
-        },
-        {
-            title: "Контакти",
-            link: "/contact"
-        },
-        {
-            title: "Условия за ползване",
-            link: "/policy"
-        },
-    ]
+    export let menu
+    let contact = menu.contactPage.data.attributes;
+    let menuData = menu.menu.data.attributes;
 </script>
 
 <footer>
@@ -34,17 +19,24 @@
         </svg>
 
         <div class="meta-wrapper">
-            <p>{address}</p>
-            <p>{state}</p>
-            <a class="p" target="_blank" href="tel:{phone}">{phone}</a>
-            <a class="p" target="_blank" href="mailto:{email}">{email}</a>
+            <p>{contact.addressLine1} </p>
+            <p>{contact.addressLine2}</p>
+            <p>{contact.addressLine3}</p>
+            <a href={"tel:"+contact.phoneNumber}>{contact.phoneNumber}</a>
+            <a href={"mailto:"+contact.email}>{contact.email}</a>
         </div>
 
+        <div class="links-wrapper">
+            <a href="/gdpr">{menuData.linkGDPR}</a>
+            <a href="/contact">{menuData.linkContact}</a>
+            <a href="/policy">{menuData.linkPolicy}</a>
+        </div>
+<!-- 
         <div class="links-wrapper">
             {#each links as element }
                 <a href="{element.link}">{element.title}</a>
             {/each}
-        </div>
+        </div> -->
 
     </div>
 </footer>
@@ -62,14 +54,19 @@
         gap: 5vw;
     }
 
+    .links-wrapper > a {
+        min-width: 200px;
+    }
+
     p,a {
         font-size: 15px;
         text-align: center;
+        font-style: italic;
+        color: var(--light-brown-color);
     }
 
     a {
         font-family: 'Times New Roman', Times, serif;
-        font-style: italic;
     }
 
     .footer-wrapper {
@@ -83,10 +80,7 @@
         gap: 1vh;
     }
 
-    .p {
-        color: var(--gray-color);
-        font-style: normal;
-    }
+
     @media only screen and (max-width: 765px) {
         .footer-wrapper {
             padding-left : 5vw;

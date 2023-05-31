@@ -12,14 +12,18 @@
         div.forEach((element)=>{
             element.addEventListener('mouseenter', () => {
                 element.childNodes[0].style.transform = 'scale(1.05)'
-                element.childNodes[4].style.color = 'var(--dark-brown-color)'
-                element.childNodes[4].style.opacity = '1'
+                if(locale == "bg"){
+                    element.childNodes[4].style.color = 'var(--dark-brown-color)'
+                    element.childNodes[4].style.opacity = '1'
+                }
             })
 
             element.addEventListener('mouseleave', () => {
                 element.childNodes[0].style.transform = 'scale(1)'
-                element.childNodes[4].style.color = 'var(--light-brown-color)'
-                element.childNodes[4].style.opacity = '0.8'
+                if(locale == "bg"){
+                    element.childNodes[4].style.color = 'var(--light-brown-color)'
+                    element.childNodes[4].style.opacity = '0.8'
+                }
             })
         })
     })
@@ -39,10 +43,12 @@
             <a class="diary-item" href="/diary/{element.id}">
                 <img width="500" height="500" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
                 <div>
-                    <p class="date sofia-font">{getDate(new Date(element.attributes.publicationDate), locale)}</p>
-                    <p class="title">{element.attributes.title}</p>
+                    <p class="date sofia-font" >{getDate(new Date(element.attributes.publicationDate), locale)}</p>
+                    <p class="title {locale == "bg" ? "" : "restrict-w"}">{element.attributes.title}</p>
                 </div>
-                <p class="short-description">{element.attributes.content.replace(/<[^>]+>/g, '').slice(0, 80)+"..."}</p>
+                {#if locale == "bg" }   
+                    <p class="short-description">{element.attributes.content.replace(/<[^>]+>/g, '').slice(0, 80)+"..."}</p>
+                {/if}
             </a>
             {/each}
         </div>       
@@ -68,8 +74,9 @@
         display: flex;
         flex-direction: row;
         align-items: start;
-        justify-content: center;
+        justify-content: space-around;
         gap: 4vw;
+        width: 100%;
     }
 
     .diary-item {
@@ -86,6 +93,10 @@
         height: 1px;
         background-color: var(--light-brown-color);
         margin-bottom: 20px;
+    }
+
+    .restrict-w {
+        width: 200px;
     }
 
     img {
@@ -130,6 +141,10 @@
     @media only screen and (max-width: 765px) {
         h2 {
             font-size: 18px;
+        }
+
+        .restrict-w {
+            width: 120px;
         }
 
         img {
