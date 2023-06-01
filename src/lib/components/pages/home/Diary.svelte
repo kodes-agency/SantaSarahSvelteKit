@@ -42,7 +42,7 @@
             {#each diary as element }
             <a class="diary-item" href="/diary/{element.id}">
                 <img width="500" height="500" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
-                <div>
+                <div class="{locale == "bg" ? "" : "restrict-w"}">
                     <p class="date sofia-font" >{getDate(new Date(element.attributes.publicationDate), locale)}</p>
                     <p class="title {locale == "bg" ? "" : "restrict-w"}">{element.attributes.title}</p>
                 </div>
@@ -74,7 +74,7 @@
         display: flex;
         flex-direction: row;
         align-items: start;
-        justify-content: space-evenly;
+        justify-content: center;
         gap: 4vw;
         width: 100%;
     }
@@ -96,7 +96,7 @@
     }
 
     .restrict-w {
-        width: 180px;
+        width: 200px;
     }
 
     img {
@@ -144,7 +144,8 @@
         }
 
         .restrict-w {
-            width: 120px;
+            width: auto;
+            max-width: 30vw;
         }
 
         img {
