@@ -38,7 +38,7 @@
             <a href="/wines/{element.id}">
                 <div class="item-wrapper">
                     <img height="250" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
-                    <p class="year">{new Date(element.attributes.wineDetails.year).getFullYear()}</p>
+                    <p class="year">{new Date(element.attributes.harvestYear).getFullYear()}</p>
                     <p class="title">{element.attributes.name}</p>
                 </div>
             </a>

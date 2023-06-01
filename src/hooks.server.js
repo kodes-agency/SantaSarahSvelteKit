@@ -33,7 +33,7 @@ function locale(event, lang, geo){
 export async function handle({ event, resolve }) {
     const lang = event.cookies.get('lang')
     const geo = event.cookies.get('geo')
-
+    
 
     locale(event, lang, geo)
     console.log(geo)

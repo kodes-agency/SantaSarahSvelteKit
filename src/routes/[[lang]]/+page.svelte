@@ -59,6 +59,7 @@
     }
 
     onMount(()=>{
+        scrollHandler()
         $logoColor = "none"
         $iconColor = "white"
         heroHeight = document.querySelector('.home-hero-section').offsetHeight

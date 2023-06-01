@@ -57,6 +57,7 @@ export function query(locale) {
                 cookieDescription
                 cookieAcceptLabel
                 cookieRejectLabel
+                cookieSettings
                 cookieCloseLabel
                 cookieNecessaryLabel
                 cookieNecessaryDescription

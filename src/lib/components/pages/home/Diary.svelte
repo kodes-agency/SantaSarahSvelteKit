@@ -96,7 +96,7 @@
     }
 
     .restrict-w {
-        width: 200px;
+        width: 180px;
     }
 
     img {

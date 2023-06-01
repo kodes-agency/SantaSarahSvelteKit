@@ -41,9 +41,7 @@ export function query(locale) {
                           }
                         }
                       }
-                      wineDetails {
-                        year
-                      }
+                      harvestYear
                     }
                   }
                 }

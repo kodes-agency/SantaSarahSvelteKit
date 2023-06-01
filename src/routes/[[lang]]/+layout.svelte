@@ -6,7 +6,6 @@
     import AgeConsent from "$lib/components/global/AgeConsent.svelte";
     import '@beyonk/gdpr-cookie-consent-banner/style.css' // optional, you can also define your own styles
     import { Banner as GdprBanner } from '@beyonk/gdpr-cookie-consent-banner'
-
     
     export let data;
 
@@ -30,55 +29,60 @@
     <meta name="description" content="{data.menu.seo.data.attributes.seoDescription}">
     <meta name="keywords" content="{data.menu.seo.data.attributes.seoKeywords}">
 </svelte:head>
+    <div class="load-screen">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <Header
+        menu = {data.menu}
+    ></Header>
+    <Language
+        locale = {data.locale}
+    ></Language>
+    <AgeConsent
+        content = {data.menu.ageConsent.data.attributes}
+        imgUrl = {data.imgUrl}
+    ></AgeConsent>
+    <GdprBanner 
+        heading={data.menu.cookiesGdpr.data.attributes.cookieHeading}
+        description = {data.menu.cookiesGdpr.data.attributes.cookieDescription}
+        cookieName="gdpr_cookie_consent"
+        acceptLabel={data.menu.cookiesGdpr.data.attributes.cookieAcceptLabel}
+        settingsLabel={data.menu.cookiesGdpr.data.attributes.cookieSettings}
+        rejectLabel={data.menu.cookiesGdpr.data.attributes.cookieRejectLabel}
+        closeLabel={data.menu.cookiesGdpr.data.attributes.cookieCloseLabel}
+        choices={{
+            necessary: {
+                label: `${data.menu.cookiesGdpr.data.attributes.cookieNecessaryLabel}`,
+                description: `${data.menu.cookiesGdpr.data.attributes.cookieNecessaryDescription}`,
+                value: true
+            },
+            tracking: {
+                label: `${data.menu.cookiesGdpr.data.attributes.cookieTrackingLabel}`,
+                description: `${data.menu.cookiesGdpr.data.attributes.cookieTrackingDescription}`,
+                value: true
+            },
+            analytics: {
+                label: `${data.menu.cookiesGdpr.data.attributes.cookieAnalyticsLabel}`,
+                description: `${data.menu.cookiesGdpr.data.attributes.cookieAnalyticsDescription}`,
+                value: true
+            },
+            marketing: false
+        }}
+        on:analytics={initAnalytics}
+        on:tracking={initTracking}
+        on:necessary={initNecessary}
+    />
+    <main class="body">
+        <slot></slot>
+    </main>
+    <Footer
+        menu = {data.menu}
+    ></Footer>
 
-<Header
-    menu = {data.menu}
-></Header>
-<Language
-    locale = {data.locale}
-></Language>
-<AgeConsent
-    content = {data.menu.ageConsent.data.attributes}
-    imgUrl = {data.imgUrl}
-></AgeConsent>
-<GdprBanner 
-    heading={data.menu.cookiesGdpr.data.attributes.cookieHeading}
-    description = {data.menu.cookiesGdpr.data.attributes.cookieDescription}
-    cookieName="gdpr_cookie_consent"
-    acceptLabel={data.menu.cookiesGdpr.data.attributes.cookieAcceptLabel}
-    rejectLabel={data.menu.cookiesGdpr.data.attributes.cookieRejectLabel}
-    closeLabel={data.menu.cookiesGdpr.data.attributes.cookieCloseLabel}
-    choices={{
-        necessary: {
-            label: `${data.menu.cookiesGdpr.data.attributes.cookieNecessaryLabel}`,
-            description: `${data.menu.cookiesGdpr.data.attributes.cookieNecessaryDescription}`,
-            value: true
-        },
-        tracking: {
-            label: `${data.menu.cookiesGdpr.data.attributes.cookieTrackingLabel}`,
-            description: `${data.menu.cookiesGdpr.data.attributes.cookieTrackingDescription}`,
-            value: true
-        },
-        analytics: {
-            label: `${data.menu.cookiesGdpr.data.attributes.cookieAnalyticsLabel}`,
-            description: `${data.menu.cookiesGdpr.data.attributes.cookieAnalyticsDescription}`,
-            value: true
-        },
-        marketing: false
-    }}
-    on:analytics={initAnalytics}
-    on:tracking={initTracking}
-    on:necessary={initNecessary}
-/>
-<main class="body">
-    <slot></slot>
-</main>
-<Footer
-    menu = {data.menu}
-></Footer>
 
 
 <style>
+
 
     :global(.cookieConsentWrapper){
         background-color: var(--bg-color);
@@ -145,6 +149,75 @@
         transform: scale(1.1);
         background: var(--dark-brown-color);
         color: var(--bg-color);
+    }
+
+    .load-screen {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        background-color: var(--bg-color);
+        z-index: 10000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lds-ellipsis {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+    .lds-ellipsis div {
+        position: absolute;
+        top: 33px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--dark-brown-color);
+        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
+    .lds-ellipsis div:nth-child(1) {
+        left: 8px;
+        animation: lds-ellipsis1 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(2) {
+        left: 8px;
+        animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(3) {
+        left: 32px;
+        animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(4) {
+        left: 56px;
+        animation: lds-ellipsis3 0.6s infinite;
+    }
+    @keyframes lds-ellipsis1 {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @keyframes lds-ellipsis3 {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0);
+        }
+    }
+    @keyframes lds-ellipsis2 {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(24px, 0);
+        }
     }
 
 
