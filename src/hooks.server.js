@@ -35,7 +35,7 @@ export async function handle({ event, resolve }) {
     const lang = event.cookies.get('lang')
 
     locale(event, lang)
-
+    console.log("locale:", local)
     event.locals.locale = local
     event.locals.apiUri = graphUri
     event.locals.imgUrl = imageUri
