@@ -8,7 +8,8 @@ const localeDe = "de"
 
 let local 
 
-function locale(event, lang){
+function locale(event, lang, geo){
+
     if(lang === localeBg || event.params.lang === localeBg){
         return local = localeBg
     }
@@ -30,12 +31,12 @@ function locale(event, lang){
 
 
 export async function handle({ event, resolve }) {
-    const geo = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1]
     const lang = event.cookies.get('lang')
+    const geo = event.cookies.get('geo')
 
-    locale(event, lang)
-    console.log("locale", local)
-    console.log("geo", geo)
+
+    locale(event, lang, geo)
+    console.log(geo)
     event.locals.locale = local
     event.locals.apiUri = graphUri
     event.locals.imgUrl = imageUri

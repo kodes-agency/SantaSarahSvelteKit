@@ -6,8 +6,7 @@
     import AgeConsent from "$lib/components/global/AgeConsent.svelte";
     import '@beyonk/gdpr-cookie-consent-banner/style.css' // optional, you can also define your own styles
     import { Banner as GdprBanner } from '@beyonk/gdpr-cookie-consent-banner'
-    import { gsap } from "gsap/dist/gsap";
-    
+
     
     export let data;
 

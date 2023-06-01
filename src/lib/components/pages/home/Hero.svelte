@@ -82,7 +82,6 @@
         }
         p {
             font-size: 16px;
-            padding-right: 7vw;
         }
     }
 </style>

@@ -12,15 +12,26 @@
         window.location.reload()
     } 
 
-    // onMount(() => {
-    //     buttons = document.querySelectorAll('.lang-buttons')
-    //     buttons.forEach(button => {
-    //         button.style.fontWeight = "lighter"
-    //         if(button.id == locale){
-    //             button.style.fontWeight = "bold"
-    //         }
-    //     })
-    // })
+    function getGeo(){
+        const geo = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1]
+        document.cookie = `geo=${geo}; path=/;`
+    }
+
+    function reloadPage(){
+        if( window.localStorage ){
+            if( !localStorage.getItem('firstLoad')){
+                localStorage['firstLoad'] = true;
+                window.location.reload();
+                }  
+            else
+                localStorage.removeItem('firstLoad');
+        }
+    };
+
+    onMount(() => {
+        getGeo()
+        reloadPage()
+    })
 </script>
 
     {#if $page.route.id != "/[[lang]]/wines/[slug]" }
