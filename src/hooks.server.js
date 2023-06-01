@@ -34,11 +34,19 @@ export async function handle({ event, resolve }) {
     const lang = event.cookies.get('lang')
     const geo = event.cookies.get('geo')
     
-
+    
     locale(event, lang, geo)
-    console.log(geo)
     event.locals.locale = local
     event.locals.apiUri = graphUri
     event.locals.imgUrl = imageUri
-    return await resolve(event)
+
+    if(geo == undefined && event.url.pathname == "/" && lang == undefined){
+        return new Response(null, {
+            status: 302,
+            headers: {location: "/lang"}
+        })
+    }
+
+    const response = await resolve(event)
+    return response
 }
