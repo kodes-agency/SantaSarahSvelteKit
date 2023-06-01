@@ -28,10 +28,9 @@ function locale(event, lang){
     }
 }
 
-const geo = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1]
-
 
 export async function handle({ event, resolve }) {
+    const geo = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1]
     const lang = event.cookies.get('lang')
 
     locale(event, lang)
