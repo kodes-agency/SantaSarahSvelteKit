@@ -6,6 +6,9 @@
     let section
 
     $: $page
+    
+    
+    let links = ["/[[lang]]/wines/[slug]", "/[[lang]]/news/[slug]", "/[[lang]]/diary/[slug]"]
 
     function setLanguage(lang) {
         document.cookie = `lang=${lang}; path=/;`
@@ -15,6 +18,7 @@
     function getGeo(){
         const geo = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1]
         document.cookie = `geo=${geo}; path=/;`
+        console.log($page.route.id)
     }
 
     onMount(() => {
@@ -22,7 +26,13 @@
     })
 </script>
 
-    {#if $page.route.id != "/[[lang]]/wines/[slug]" }
+    {#if $page.route.id == "/[[lang]]/wines/[slug]"}
+        <div></div>
+    {:else if $page.route.id == "/[[lang]]/news/[slug]"}
+        <div></div>
+    {:else if $page.route.id == "/[[lang]]/diary/[slug]"}
+        <div></div>
+    {:else}
         <div class="section-wrapper" bind:this={section}>
             <button class='sofia-font lang-buttons {locale == "bg" ? "bold" : ""}' id="bg" on:click={()=>{setLanguage("bg")}}>бг</button>
             <button class='sofia-font lang-buttons {locale == "en" ? "bold" : ""}' id="en" on:click={()=>{setLanguage("en")}}>еn</button>
