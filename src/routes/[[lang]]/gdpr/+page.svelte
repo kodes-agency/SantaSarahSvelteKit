@@ -6,7 +6,7 @@
 <section>
   <div class="section-wrapper">
     <h1>{data.gdpr.pageHeading}</h1>
-    <p>{@html data.gdpr.content}</p>
+    <div class="policy-content">{@html data.gdpr.pageContent}</div>
   </div>
 </section>
 
@@ -26,4 +26,19 @@
     color: var(--gray-color);
     font-style: italic;
   }
+
+  @media only screen and (max-width: 765px) {
+    .section-wrapper {
+      padding: 5vw;
+      padding-top: 20vh;
+      gap: 5vh;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+
+
 </style>

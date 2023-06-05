@@ -84,3 +84,20 @@ img {
     color: var(--white-color);
     cursor: pointer;
 }
+
+.policy-content li {
+    margin-left: 50px;
+}
+
+.policy-content h2 {
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+i {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}

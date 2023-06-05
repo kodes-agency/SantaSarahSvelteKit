@@ -18,7 +18,6 @@
     function getGeo(){
         const geo = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1]
         document.cookie = `geo=${geo}; path=/;`
-        console.log($page.route.id)
     }
 
     onMount(() => {
