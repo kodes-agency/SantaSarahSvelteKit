@@ -7,13 +7,20 @@
   
   <section>
       <div class="section-wrapper">
-        <h1>{data.news.newsPage.data.attributes.heroHeading}</h1>
-        <div class="colums-wrapper">
-            <div class="left-column">
+          <h1>{data.news.newsPage.data.attributes.heroHeading}</h1>
+          <div class="colums-wrapper">
+              <div class="left-column">
                 <Current
                     news = {data.news.news.data}
                     locale = {data.locale}
                 ></Current>
+                <div class="archive-section desktop">
+                    <Archive
+                    news = {data.news.news.data}
+                    locale = {data.locale}
+                    >
+                    </Archive>
+                </div>
             </div>
             <div class="right-column">
                 <div class="diary-heading-wrapper">
@@ -27,17 +34,26 @@
                 ></Diary>
             </div>
         </div>
-        
-
-          <Archive
-              news = {data.news.news.data}
-              locale = {data.locale}
-          >
-          </Archive>
-      </div>
+        <div class="mobile">
+            <Archive
+            news = {data.news.news.data}
+            locale = {data.locale}
+            >
+            </Archive>
+        </div>
+    </div>
   </section>
   
   <style>
+    .mobile {
+        display: none;
+    }
+
+    .archive-section {
+        padding-top: 10vh;
+    }
+
+
     .section-wrapper {
         display: flex;
         flex-direction: column;
@@ -78,7 +94,11 @@
     .right-column {
         display: flex;
         flex-direction: column;
-        align-items: end;
+        align-items: center;
+    }
+
+    .left-column {
+        max-width: 60vw;
     }
 
     .diary-heading-wrapper {
@@ -94,6 +114,14 @@
             padding-top: 20vh;
             padding-bottom: 5vh;
             gap: 5vh;
+        }
+
+        .mobile {
+            display: block;
+        }
+
+        .desktop {
+            display: none;
         }
 
         .colums-wrapper {

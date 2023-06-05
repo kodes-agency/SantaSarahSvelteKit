@@ -48,10 +48,6 @@
 </section>
 
 <style>
-    section {
-        width: 70vw;
-    }
-
     .year-wrapper {
         padding-top: 10vh;
         padding-bottom: 10vh;

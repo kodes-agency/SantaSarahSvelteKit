@@ -34,6 +34,7 @@ export function getDate(date, locale) {
             id: 6,
             en: 'June',
             de: 'Juni',
+            bg: 'Юни'
         },
         {
             id: 7,
