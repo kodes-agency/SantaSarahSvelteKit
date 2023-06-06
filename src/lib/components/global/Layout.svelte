@@ -49,10 +49,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 30vh;
+        gap: 15vh;
         padding-left : 15vw;
         padding-right : 15vw;
-        padding-top : 30vh;
+        padding-top : 15vh;
         padding-bottom : 30vh;
     }
 
