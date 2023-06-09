@@ -30,7 +30,7 @@
   @media only screen and (max-width: 765px) {
     .section-wrapper {
       padding: 5vw;
-      padding-top: 20vh;
+      padding-top: 10vh;
       gap: 5vh;
     }
 

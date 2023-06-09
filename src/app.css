@@ -101,3 +101,9 @@ i {
 strong {
     font-weight: bold;
 }
+
+@media only screen and (max-width: 765px) {
+    .policy-content li {
+        margin-left: 20px;
+    }
+}

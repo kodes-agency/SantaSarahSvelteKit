@@ -6,7 +6,7 @@
 <section>
   <div class="section-wrapper">
     <h1>{data.policy.pageHeading}</h1>
-    <p>{@html data.policy.content}</p>
+    <div class="policy-content">{@html data.policy.content}</div>
   </div>
 </section>
 
@@ -25,5 +25,17 @@
     font-size: 40px;
     color: var(--gray-color);
     font-style: italic;
+  }
+
+  @media only screen and (max-width: 765px) {
+    .section-wrapper {
+      padding: 5vw;
+      padding-top: 10vh;
+      gap: 5vh;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
   }
 </style>
