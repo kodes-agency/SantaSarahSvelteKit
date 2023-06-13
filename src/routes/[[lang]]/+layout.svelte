@@ -10,13 +10,24 @@
     export let data;
 
     function initAnalytics () {
-        // do something with segment.io or google analytics etc
+        window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-73K1X6NXFY'); 
     }
     function initTracking () {
         (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
             key: "AIzaSyBiC2VtbYqBF9LiGUlRqQVyZ8O_NtG0I74",
             v: "weekly",
         });
+
+        !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1619319361884292'); 
+            fbq('track', 'PageView');
     }
     function initNecessary () {
         // do something with segment.io or google analytics etc
@@ -28,6 +39,7 @@
     <meta name="title" content="{data.menu.seo.data.attributes.seoTitle}">
     <meta name="description" content="{data.menu.seo.data.attributes.seoDescription}">
     <meta name="keywords" content="{data.menu.seo.data.attributes.seoKeywords}">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-73K1X6NXFY"></script>
 </svelte:head>
     <div class="load-screen">
         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
