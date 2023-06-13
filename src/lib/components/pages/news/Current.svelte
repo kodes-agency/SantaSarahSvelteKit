@@ -80,6 +80,12 @@
         color: var(--gray-color);
     }
 
+    @media only screen and (max-width: 765px) {
+        h4 {
+            font-size: 20px;
+        }
+    }
+
 
 
 </style>

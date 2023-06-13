@@ -141,6 +141,7 @@
 
         .left-column {
             width: 90vw;
+            max-width: 90vw;
         }
 
         h1 {
