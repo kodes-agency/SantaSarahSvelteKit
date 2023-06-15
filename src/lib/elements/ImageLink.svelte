@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import { filter } from "$lib/functions/store.js";
 
     export let img
     export let link
@@ -28,7 +29,7 @@
     })
 </script>
 
-<a title="{title} page" aria-label="{title} page" href={link}>
+<a title="{title} page" aria-label="{title} page" href={link} on:click={()=>{$filter="all"}}>
     <div class="link-wrapper" style="background-image: url({img});">
         <p class="sofia-font">{title}</p>
     </div>
