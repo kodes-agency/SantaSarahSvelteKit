@@ -49,7 +49,7 @@
         ></Menu>
     </div>
     <div class="nav-wrapper">
-        <a href="/">
+        <a title="Link to the home page" aria-label="Link to the home page" href="/">
             <div class="logo">
                 <svg class="{$logoColor}" id="logo" width="191" height="31" viewBox="0 0 191 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="{$logoColor}" fill-rule="evenodd" clip-rule="evenodd" d="M23 28.2781C25.9986 30.1859 29.5435 30.8152 33.0605 30.4866C35.7361 30.2381 38.2164 29.5006 40.5172 28.3181C42.487 27.3081 44.3332 25.9653 46 24.3901C45.2942 24.334 44.3611 24.5625 43.5676 24.9312C41.518 26.7069 39.5602 27.6327 36.6891 28.0015C34.7751 28.246 32.8053 28.2179 31.0109 27.8772C29.2405 27.5446 27.4461 26.8712 25.9428 25.8852C31.9719 19.9411 31.4336 6.33734 23 0.56958C14.1637 6.47762 14.1318 19.8489 20.0572 25.8852C18.5539 26.8712 16.7595 27.5406 14.9891 27.8772C13.1947 28.2179 11.2249 28.246 9.31085 28.0015C6.43984 27.6327 4.47798 26.7069 2.43239 24.9312C1.63887 24.5625 0.705791 24.334 0 24.3901C1.66678 25.9653 3.513 27.3081 5.48284 28.3181C7.78762 29.5006 10.2639 30.234 12.9395 30.4866C16.4565 30.8152 20.0014 30.1819 23 28.2781ZM23 23.4001C28.6144 19.4921 27.1151 6.58985 23 2.62577C18.3067 6.58985 17.3856 19.4921 23 23.4001Z" fill="#847748"/>
@@ -57,7 +57,7 @@
                 </svg>
             </div>
         </a>
-        <button class="icon-open" on:click={()=>{clickHandle()}}>
+        <button class="icon-open" aria-label="Navigation menu toggle button" on:click={()=>{clickHandle()}}>
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <svg on:click={$menuState=true} width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect class="{$iconColor}" width="23" height="2" fill="#847748"/>

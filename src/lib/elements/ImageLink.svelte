@@ -28,7 +28,7 @@
     })
 </script>
 
-<a href={link}>
+<a title="{title} page" aria-label="{title} page" href={link}>
     <div class="link-wrapper" style="background-image: url({img});">
         <p class="sofia-font">{title}</p>
     </div>

@@ -24,7 +24,7 @@
                 </div>
                 <div class="right-column desktop">
                     {#each data.singleDiary.homePage.data.attributes.featuredDiary.data as element }
-                        <a href="/diary/{element.id}">
+                        <a title="Link to a diray article - {element.attributes.title}" aria-label="Link to a diray article - {element.attributes.title}" href="/diary/{element.id}">
                             <div class="diary-item">
                                 <p class="diary-date sofia-font">{getDate(new Date(element.attributes.publicationDate), data.locale)}</p>
                                 <p class="diary-title">{element.attributes.title}</p>
@@ -42,7 +42,7 @@
         
             <div class="right-column mobile">
                 {#each data.singleDiary.homePage.data.attributes.featuredDiary.data as element }
-                    <a href="/diary/{element.id}">
+                    <a title="Link to a diary article - {element.attributes.title}" aria-label="Link to a diary article - {element.attributes.title}" href="/diary/{element.id}">
                         <div class="diary-item">
                             <p class="diary-date sofia-font">{getDate(new Date(element.attributes.publicationDate), data.locale)}</p>
                             <p class="diary-title">{element.attributes.title}</p>

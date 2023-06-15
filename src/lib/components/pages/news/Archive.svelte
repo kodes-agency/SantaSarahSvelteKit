@@ -35,7 +35,7 @@
         </div>
         <div class="year-archive-wrapper">
             {#each element.diary as diary }
-                <a href="/news/{diary.id}">
+                <a title="Link to a diary article - {diary.title}" aria-label="Link to a diary article - {diary.title}" href="/news/{diary.id}">
                     <div class="item">
                         <p class="date sofia-font">{getDate(new Date(diary.publicationDate), locale)}</p>
                         <p class="title">{diary.title}</p>

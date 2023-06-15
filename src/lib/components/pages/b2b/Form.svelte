@@ -21,7 +21,7 @@
         <div class="success-modal">
             <h4>{formData.thankYouHeading}</h4>
             <p>{formData.thankYouSubheading}</p>
-            <button on:click={submitHandler} class="basic-button sofia-font">{formData.thankYouButton}</button>
+            <button aria-label="Back button" on:click={submitHandler} class="basic-button sofia-font">{formData.thankYouButton}</button>
         </div>
         {/if}
         {#if !$page.form }
@@ -140,7 +140,7 @@
                     </div>
                 </div>
 
-                <button class="basic-button sofia-font">{formData.buttonTextSend}</button>
+                <button aria-label="Submit form button" class="basic-button sofia-font">{formData.buttonTextSend}</button>
             </form>
         {/if}
     </div>

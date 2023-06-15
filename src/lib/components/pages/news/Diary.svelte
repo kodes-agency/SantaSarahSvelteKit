@@ -11,7 +11,7 @@
 <section>
     <div class="section-wrapper">
         {#if title }        
-            <a href="/diary">
+            <a title="Wine diary page" aria-label="Wine diary page" href="/diary">
                 <h2 class="sofia-font">{title}</h2>
             </a>
             <svg width="50" height="1" viewBox="0 0 50 1" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@
         {/if}
         <div class="diary-wrapper">
             {#each diary as element }
-            <a class="diary-item" href="/diary/{element.id}">
+            <a title="Link to a diary article - {element.attributes.title}" aria-label="Link to a diary article - {element.attributes.title}" class="diary-item" href="/diary/{element.id}">
                 <img width="80" height="80" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
                 <div>
                     <p class="date sofia-font">{getDate(new Date(element.attributes.publicationDate), locale)}</p>

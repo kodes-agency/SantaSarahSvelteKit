@@ -24,7 +24,7 @@
                 </div>
                 <div class="right-column desktop">
                     {#each data.singleNew.homePage.data.attributes.featuredNews.data as element }
-                        <a href="/news/{element.id}">
+                        <a title="Link to a news article - {element.attributes.title}" aria-label="Link to a news article - {element.attributes.title}" href="/news/{element.id}">
                             <div class="diary-item">
                                 <p class="diary-date sofia-font">{getDate(new Date(element.attributes.publicationDate), data.locale)}</p>
                                 <p class="diary-title">{element.attributes.title}</p>
@@ -40,7 +40,7 @@
             </div>
             <div class="right-column mobile">
                 {#each data.singleNew.homePage.data.attributes.featuredNews.data as element }
-                    <a href="/news/{element.id}">
+                    <a title="Link to a news article - {element.attributes.title}" aria-label="Link to a news article - {element.attributes.title}" href="/news/{element.id}">
                         <div class="diary-item">
                             <p class="diary-date sofia-font">{getDate(new Date(element.attributes.publicationDate), data.locale)}</p>
                             <p class="diary-title">{element.attributes.title}</p>

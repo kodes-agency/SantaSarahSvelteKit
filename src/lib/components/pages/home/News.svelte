@@ -21,14 +21,14 @@
     <div class="section-wrapper">
         <div class="heading-wrapper">
             <div class="line"></div>
-            <a href="/news">
+            <a title="News page" aria-label="News page" href="/news">
                 <h2>{title}</h2>
             </a>
             <div class="line"></div>
         </div>
         <div class="news-wrapper">
             {#each news as element }
-            <a href="/news/{element.id}">
+            <a title="Link to the story - {element.attributes.title}" aria-label="Link to the story - {element.attributes.title}" href="/news/{element.id}">
                 <article class="new">
                     <p class="date sofia-font">{getDate(new Date(element.attributes.publicationDate), locale)}</p>
                     <p class="title">{element.attributes.title}</p>

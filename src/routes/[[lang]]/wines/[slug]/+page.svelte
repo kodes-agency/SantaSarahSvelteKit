@@ -130,7 +130,7 @@
             </div>
         </div>
         {#if data.singleWine.vina.data.attributes.winePasspordPDF?.data?.attributes }  
-            <a class="basic-button" href="{data.imgUrl+data.singleWine.vina.data.attributes.winePasspordPDF.data.attributes.url}" download target="_blank">{data.singleWine.singleWinePage.data.attributes.buttonText}</a>
+            <a title="Link to the wine passport in PDF format" aria-label="Link to the wine passport in PDF format" class="basic-button" href="{data.imgUrl+data.singleWine.vina.data.attributes.winePasspordPDF.data.attributes.url}" download target="_blank">{data.singleWine.singleWinePage.data.attributes.buttonText}</a>
         {/if}
 
     </div>

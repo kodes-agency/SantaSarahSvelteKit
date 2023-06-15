@@ -35,7 +35,7 @@
         </div>
         <div class="wines-wrapper">
             {#each wines as element }
-            <a href="/wines/{element.id}">
+            <a title="Link to {element.attributes.name} wine" aria-label="Link to {element.attributes.name} wine" href="/wines/{element.id}">
                 <div class="item-wrapper">
                     <img height="250" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
                     <p class="year">{new Date(element.attributes.harvestYear).getFullYear()}</p>
@@ -44,7 +44,7 @@
             </a>
             {/each}
         </div>
-        <a href="/wines" class="basic-button">{button}</a>
+        <a title="All wines page" aria-label="All wines page" href="/wines" class="basic-button">{button}</a>
     </div>
 </section>
 

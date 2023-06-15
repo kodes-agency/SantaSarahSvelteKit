@@ -33,15 +33,15 @@
 <section>
     <div class="section-wrapper">
         {#if title }        
-            <a href="/diary">
+            <a title="Diary page" aria-label="Diary page" href="/diary">
                 <h2 class="sofia-font">{title}</h2>
             </a>
             <div class="line"></div>
         {/if}
         <div class="diary-wrapper">
             {#each diary as element }
-            <a class="diary-item" href="/diary/{element.id}">
-                <img width="500" height="500" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
+            <a title="Link to {element.attributes.title}" aria-label="Link to {element.attributes.title}" class="diary-item" href="/diary/{element.id}">
+                <img width="100" height="100" loading="lazy" src={imgUrl+element.attributes.image.data.attributes.formats.web.url} alt="">
                 <div class="{locale == "bg" ? "" : "restrict-w"}">
                     <p class="date sofia-font" >{getDate(new Date(element.attributes.publicationDate), locale)}</p>
                     <p class="title {locale == "bg" ? "" : "restrict-w"}">{element.attributes.title}</p>

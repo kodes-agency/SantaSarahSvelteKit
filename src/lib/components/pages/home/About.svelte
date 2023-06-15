@@ -13,7 +13,7 @@
                 {@html text}
             </p>
         </div>
-        <a href="/about" class="basic-button">{button}</a>
+        <a title="About page" aria-label="About page" href="/about" class="basic-button">{button}</a>
     </div>
 </section>
 

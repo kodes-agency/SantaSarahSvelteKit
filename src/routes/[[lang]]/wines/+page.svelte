@@ -188,7 +188,7 @@
             </h3>
 
             <section class="filter-section">
-                <button on:click={()=>{filterButtonHandler()}} class="filter-button sofia-font">
+                <button aria-label="Show filters" on:click={()=>{filterButtonHandler()}} class="filter-button sofia-font">
                     {#if filterStatus }
                         {data.wines?.winesPage.data.attributes.hideFilters} ↑
                     {:else}
@@ -197,12 +197,12 @@
                 </button>
                 <div class="filter-container">
                     <div class="filter-wrapper">
-                        <button class="filter-item sofia-font" on:click={()=>{setFilter("all")}}>
+                        <button aria-label="Filter button - All wines" class="filter-item sofia-font" on:click={()=>{setFilter("all")}}>
                                 {data.wines?.winesPage.data.attributes.heroSubheading}
                         </button>
                         <div class="category-wrapper">
                             {#each data.wines.wineTypes.data as element }
-                                <button class="filter-item sofia-font" on:click={()=>{setFilter(element.attributes.filterName)}}>{element.attributes.wineType}</button>
+                                <button aria-label="Filter button - {element.attributes.filterName}" class="filter-item sofia-font" on:click={()=>{setFilter(element.attributes.filterName)}}>{element.attributes.wineType}</button>
                             {/each}
                         </div>
                     </div>

@@ -30,7 +30,7 @@
 <section>
     <div class="section-wrapper">
         {#each currentDiary[0].diary as element }
-        <a href="/news/{element.id}">
+        <a title="Link to a news article - {element.title}" aria-label="Link to a news article - {element.title}" href="/news/{element.id}">
             <div class="news-item">
                 <p class="date sofia-font">{getDate(element.publicationDate, locale)}</p>
                 <h4 class="title">{element.title}</h4>

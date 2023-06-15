@@ -33,9 +33,9 @@
         <div></div>
     {:else}
         <div class="section-wrapper" bind:this={section}>
-            <button class='sofia-font lang-buttons {locale == "bg" ? "bold" : ""}' id="bg" on:click={()=>{setLanguage("bg")}}>бг</button>
-            <button class='sofia-font lang-buttons {locale == "en" ? "bold" : ""}' id="en" on:click={()=>{setLanguage("en")}}>еn</button>
-            <button class='sofia-font lang-buttons {locale == "de" ? "bold" : ""}' id="de" on:click={()=>{setLanguage("de")}}>de</button>
+            <button aria-label="Link to the Bulgarian version" class='sofia-font lang-buttons {locale == "bg" ? "bold" : ""}' id="bg" on:click={()=>{setLanguage("bg")}}>бг</button>
+            <button aria-label="Link to the English version" class='sofia-font lang-buttons {locale == "en" ? "bold" : ""}' id="en" on:click={()=>{setLanguage("en")}}>еn</button>
+            <button aria-label="Link to the German version" class='sofia-font lang-buttons {locale == "de" ? "bold" : ""}' id="de" on:click={()=>{setLanguage("de")}}>de</button>
         </div>
     {/if}
 

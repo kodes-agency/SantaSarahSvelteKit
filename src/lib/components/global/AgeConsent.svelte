@@ -60,10 +60,10 @@
                 {content.heroSubheading}
             </p>
             <div class="button-wrapper">
-                <button class="basic-button sofia-font" on:click={()=>{setAgeConsent(1)}}>
+                <button aria-label="{content.approveButton}" class="basic-button sofia-font" on:click={()=>{setAgeConsent(1)}}>
                     {content.approveButton}
                 </button>
-                <button class="basic-button sofia-font" on:click={()=>{setAgeConsent(0)}}>
+                <button aria-label="{content.denyButton}" class="basic-button sofia-font" on:click={()=>{setAgeConsent(0)}}>
                     {content.denyButton}
                 </button>
             </div>
