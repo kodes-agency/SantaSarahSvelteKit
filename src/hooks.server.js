@@ -35,17 +35,17 @@ export async function handle({ event, resolve }) {
     const geo = event.cookies.get('geo')
     
     
-    // locale(event, lang, geo)
+    locale(event, lang, geo)
     event.locals.locale = localeBg
     event.locals.apiUri = graphUri
     event.locals.imgUrl = imageUri
 
-    // if(geo == undefined && event.url.pathname == "/" && lang == undefined){
-    //     return new Response(null, {
-    //         status: 302,
-    //         headers: {location: "/lang"}
-    //     })
-    // }
+    if(geo == undefined && event.url.pathname == "/" && lang == undefined){
+        return new Response(null, {
+            status: 302,
+            headers: {location: "/lang"}
+        })
+    }
 
     const response = await resolve(event)
     return response
