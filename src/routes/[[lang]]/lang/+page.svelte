@@ -6,11 +6,17 @@
         document.cookie = `geo=${geo}; path=/;`
     }
 
+    
+
     onMount(() => {
         getGeo()
-        setTimeout(() => {
+        const langTimeout = setTimeout(() => {
             window.location.href = "/"
         }, 1000);
+
+        return () => {
+            clearTimeout(langTimeout)
+        }
     })
     
 </script>
