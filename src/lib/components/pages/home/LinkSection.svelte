@@ -24,8 +24,9 @@
     }
     
     .section-wrapper {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 3vw;
         width: 90vw;    
@@ -33,8 +34,15 @@
 
     @media only screen and (max-width: 765px) {
         .section-wrapper {
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             width: auto;
+            gap: 5vw;
+        }
+    }
+
+    @media only screen and (max-width: 555px) {
+        .section-wrapper {
             gap: 0vw;
         }
     }
