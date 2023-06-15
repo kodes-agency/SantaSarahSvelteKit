@@ -26,7 +26,6 @@
             show = false
             document.querySelector('.body').style.display = 'block'
         }
-        window.location.reload()
     }
     
 </script>
