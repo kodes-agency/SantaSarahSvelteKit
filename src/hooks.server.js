@@ -36,7 +36,7 @@ export async function handle({ event, resolve }) {
     
     
     locale(event, lang, geo)
-    event.locals.locale = localeBg
+    event.locals.locale = local
     event.locals.apiUri = graphUri
     event.locals.imgUrl = imageUri
 
