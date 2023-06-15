@@ -11,14 +11,14 @@
         const div = document.querySelectorAll('.link-wrapper')
         div.forEach((div)=>{
             div.addEventListener('mouseenter', ()=>{
-                div.style.backgroundSize = '125%'
+                div.style.backgroundSize = '120%'
                 div.childNodes.forEach((child)=>{
                     child.style.backgroundColor = 'var(--bg-color)'
                     child.style.color = 'var(--dark-brown-color)'
             })
             })
             div.addEventListener('mouseleave', ()=>{
-                div.style.backgroundSize = '120%'
+                div.style.backgroundSize = '115%'
                 div.childNodes.forEach((child)=>{
                     child.style.backgroundColor = 'transparent'
                     child.style.color = 'var(--bg-color)'
@@ -38,7 +38,7 @@
 <style>
 
     div {
-        background-size: 120%;
+        background-size: 115%;
         background-repeat: no-repeat;
         background-position: center;
         width: 43.5vw;

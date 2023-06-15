@@ -43,7 +43,7 @@
 
     @media only screen and (max-width: 555px) {
         .section-wrapper {
-            gap: 0vw;
+            gap: 4vw;
         }
     }
 </style>
