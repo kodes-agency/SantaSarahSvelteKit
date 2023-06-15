@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-
+    import { filter } from "$lib/functions/store.js";
     export let title = "Заглавие"
     export let subTitle = "Подзаглавие"
     export let button = "Виж всички"
@@ -44,7 +44,7 @@
             </a>
             {/each}
         </div>
-        <a title="All wines page" aria-label="All wines page" href="/wines" class="basic-button">{button}</a>
+        <a title="All wines page" aria-label="All wines page" href="/wines" class="basic-button" on:click={()=>{$filter="all"}}>{button}</a>
     </div>
 </section>
 
