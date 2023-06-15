@@ -46,8 +46,9 @@
         }
     ]
 
-    let heroHeight
+
     function scrollHandler (){
+        let heroHeight = document.querySelector('.home-hero-section').offsetHeight
         let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
             if(scrollTop + 50 > heroHeight){
                 $logoColor = "black"
@@ -62,7 +63,7 @@
         scrollHandler()
         $logoColor = "none"
         $iconColor = "white"
-        heroHeight = document.querySelector('.home-hero-section').offsetHeight
+        // heroHeight = document.querySelector('.home-hero-section').offsetHeight
 
         document.addEventListener('scroll', scrollHandler)
 
