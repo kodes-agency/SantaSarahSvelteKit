@@ -12,7 +12,7 @@
 
     function setLanguage(lang) {
         document.cookie = `lang=${lang}; path=/;`
-        window.location.reload()
+        window.location.replace(`${$page.url.origin}${$page.route.id.replace("[[lang]]", lang)}`)
     } 
 
     function getGeo(){
@@ -23,6 +23,8 @@
     onMount(() => {
         getGeo()
     })
+
+    console.log($page)
 </script>
 
     {#if $page.route.id == "/[[lang]]/wines/[slug]"}

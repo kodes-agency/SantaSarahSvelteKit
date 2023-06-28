@@ -6,34 +6,31 @@ const localeBg = "bg"
 const localeEn = "en"
 const localeDe = "de"
 
-let local 
+let local
 
 function locale(event, lang, geo){
-
-    if(lang === localeBg || event.params.lang === localeBg){
-        return local = localeBg
+    if(event.params.lang == "bg" || event.params.lang == "en" || event.params.lang == "de"){
+        event.cookies.set('lang', event.params.lang, {httpOnly: false})
+        return local = event.params.lang
     }
-    if(lang === localeEn || event.params.lang === localeEn){
-        return local = localeEn
-    }
-    if(lang === localeDe || event.params.lang === localeDe){
-        return local = localeDe
+    
+    if(lang == "bg" || lang == "en" || lang == "de"){
+        return local = lang
     }
 
     if(geo == "Sofia") {
-        local = localeBg
+        return local = localeBg
     } else if(geo == "Berlin") {
-        local = localeDe
+        return local = localeDe
     } else {
-        local = localeEn
+        return local = localeEn
     }
 }
 
 
 export async function handle({ event, resolve }) {
-    const lang = event.cookies.get('lang')
     const geo = event.cookies.get('geo')
-    
+    const lang = event.cookies.get('lang')
     
     locale(event, lang, geo)
     event.locals.locale = local
@@ -47,6 +44,8 @@ export async function handle({ event, resolve }) {
         })
     }
 
-    const response = await resolve(event)
+    const response = await resolve(event, {
+        transformPageChunk: ({html}) => html.replace("%lang%", local),
+    })
     return response
 }

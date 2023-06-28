@@ -9,6 +9,7 @@
     
     export let data;
 
+
     function initAnalytics () {
         window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-73K1X6NXFY'); 
     }
@@ -39,7 +40,8 @@
     <meta name="title" content="{data.menu.seo.data.attributes.seoTitle}">
     <meta name="description" content="{data.menu.seo.data.attributes.seoDescription}">
     <meta name="keywords" content="{data.menu.seo.data.attributes.seoKeywords}">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-73K1X6NXFY"></script>
+    <!-- <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-73K1X6NXFY"></script> -->
 </svelte:head>
     <div class="load-screen">
         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>

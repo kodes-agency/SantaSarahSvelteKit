@@ -44,6 +44,8 @@ a, li {
     text-decoration: none;
 }
 
+
+
 a {
     font-family: 'Sofia Sans', sans-serif;
 }
@@ -51,7 +53,13 @@ a {
 ul {
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    margin-top: -2vh;
+    margin-bottom: -2vh;
+}
+
+li {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 img {

@@ -1,5 +1,6 @@
 import { query } from '$lib/queries/menuQuery'
 
+
 export const load = async ({fetch, locals}) => {
   let uri = locals.apiUri
   const fetchOptions = {

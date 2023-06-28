@@ -88,12 +88,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 5vh;
         position: fixed;
         top:0px;
         z-index: 1000;
         width: 100%;
+        gap: 5vh;
     }
+
+
 
     h1, p {
         color: var(--white-color);
@@ -133,9 +135,11 @@
     .button-wrapper {
         display: flex;
         flex-direction: row;
-        gap: 5vw;
         margin-top: 5vh;
+        gap: 4vw;
     }
+
+
 
     button {
         background-color: transparent;
